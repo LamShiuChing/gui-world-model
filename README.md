@@ -58,3 +58,7 @@ Collect and test on the same renderer: Windows and Linux Chromium draw fonts sli
 drops the planner from 88% to 63%.
 
 Feedback is very welcome, especially on where you think this breaks.
+
+## License
+
+MIT, see [LICENSE](LICENSE). The data on the Hub is CC BY 4.0.
