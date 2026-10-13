@@ -1,0 +1,42 @@
+INVERSE trains on 6396 labelled clicks (10% of 63962); test 26314 transitions on held-out boards
+
+=== Guess the click from (before, after) on held-out boards: functional accuracy ===
+method                                   all  changed   reset   no-op
+random click                           47.1%     5.4%    1.0%   81.2%
+INVERSE (10% labels)                   91.5%    82.6%   67.3%   98.8%
+IMAGINER as inverse (100% labels)     100.0%    99.9%  100.0%  100.0%
+
+INVERSE labels for the 57566 'unlabelled' training clicks: 90.6% functionally correct
+saved inverse_labels.npz -> next: python train.py 6000 small | python train.py 6000 pseudo
+5095 states (1525 held out) | train 6396 | test 26314 transitions | labels: small
+trainable params: 3.4M
+changed-patch fraction rho=0.044 -> change weight 21.7
+
+=== Level 0a results on held-out boards (never seen in training) ===
+latent error, changed transitions (nothing-changes baseline = 1.00): model 0.089 | shuffled click 1.133
+change-map F1 on changed transitions: 0.998
+board accuracy      n   model  shuffled  nothing-changes
+all              6000   99.0%     40.5%            53.9%
+no-op            3232   99.6%     67.5%           100.0%
+changed          2768   98.4%      9.0%             0.0%
+winning move      119   71.4%      5.9%             0.0%
+reset             585  100.0%      8.0%             0.0%
+
+KILL TEST: PASS  (needs latent error < 0.5 x baseline and +30 pts board accuracy over shuffled click)
+saved D:\Latent Action-conditioned Prediction of Interface States\results\level0a_examples_small.png  (cols: before+click | true after | model's predicted board | true change map | predicted change map)
+5095 states (1525 held out) | train 63962 | test 26314 transitions | labels: pseudo
+trainable params: 3.4M
+changed-patch fraction rho=0.044 -> change weight 21.6
+
+=== Level 0a results on held-out boards (never seen in training) ===
+latent error, changed transitions (nothing-changes baseline = 1.00): model 0.106 | shuffled click 1.124
+change-map F1 on changed transitions: 0.992
+board accuracy      n   model  shuffled  nothing-changes
+all              6000   98.4%     40.4%            53.9%
+no-op            3232   98.7%     67.0%           100.0%
+changed          2768   98.1%      9.3%             0.0%
+winning move      119   89.9%      9.2%             0.0%
+reset             585   99.8%      8.2%             0.0%
+
+KILL TEST: PASS  (needs latent error < 0.5 x baseline and +30 pts board accuracy over shuffled click)
+saved D:\Latent Action-conditioned Prediction of Interface States\results\level0a_examples_pseudo.png  (cols: before+click | true after | model's predicted board | true change map | predicted change map)

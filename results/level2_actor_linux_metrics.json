@@ -1,0 +1,105 @@
+{
+  "n": 240,
+  "same_screen_threshold": 0.08217231631278991,
+  "success": {
+    "all": {
+      "n": 240,
+      "mse look3": 0.6291666666666667,
+      "judge 1": 0.49583333333333335,
+      "judge 3": 0.5125,
+      "actor": 0.36666666666666664,
+      "actor8+judge": 0.5333333333333333,
+      "random": 0.016666666666666666,
+      "extra_clicks_actor8+judge": 0.0625
+    },
+    "2 clicks away": {
+      "n": 60,
+      "mse look3": 0.75,
+      "judge 1": 0.6833333333333333,
+      "judge 3": 0.7,
+      "actor": 0.6333333333333333,
+      "actor8+judge": 0.75,
+      "random": 0.06666666666666667,
+      "extra_clicks_actor8+judge": 0.044444444444444446
+    },
+    "3 clicks away": {
+      "n": 60,
+      "mse look3": 0.6833333333333333,
+      "judge 1": 0.55,
+      "judge 3": 0.5833333333333334,
+      "actor": 0.48333333333333334,
+      "actor8+judge": 0.5666666666666667,
+      "random": 0.0,
+      "extra_clicks_actor8+judge": 0.08823529411764706
+    },
+    "4 clicks away": {
+      "n": 60,
+      "mse look3": 0.55,
+      "judge 1": 0.3,
+      "judge 3": 0.2833333333333333,
+      "actor": 0.13333333333333333,
+      "actor8+judge": 0.35,
+      "random": 0.0,
+      "extra_clicks_actor8+judge": 0.0
+    },
+    "5 clicks away": {
+      "n": 60,
+      "mse look3": 0.5333333333333333,
+      "judge 1": 0.45,
+      "judge 3": 0.48333333333333334,
+      "actor": 0.21666666666666667,
+      "actor8+judge": 0.4666666666666667,
+      "random": 0.0,
+      "extra_clicks_actor8+judge": 0.10714285714285714
+    },
+    "needs Reset first": {
+      "n": 120,
+      "mse look3": 0.9416666666666667,
+      "judge 1": 0.8583333333333333,
+      "judge 3": 0.8666666666666667,
+      "actor": 0.5166666666666667,
+      "actor8+judge": 0.875,
+      "random": 0.0,
+      "extra_clicks_actor8+judge": 0.0761904761904762
+    },
+    "no Reset needed": {
+      "n": 120,
+      "mse look3": 0.31666666666666665,
+      "judge 1": 0.13333333333333333,
+      "judge 3": 0.15833333333333333,
+      "actor": 0.21666666666666667,
+      "actor8+judge": 0.19166666666666668,
+      "random": 0.03333333333333333,
+      "extra_clicks_actor8+judge": 0.0
+    }
+  },
+  "decision_ms_median": {
+    "mse look3": 205.32949268817902,
+    "judge 1": 41.231588926166296,
+    "judge 3": 342.6451529376209,
+    "actor": 5.637285299599171,
+    "actor8+judge": 16.81689638644457
+  },
+  "failures": {
+    "mse look3": {
+      "stopped at a wrong board": 0,
+      "ran out of clicks": 89
+    },
+    "judge 1": {
+      "stopped at a wrong board": 0,
+      "ran out of clicks": 121
+    },
+    "judge 3": {
+      "stopped at a wrong board": 0,
+      "ran out of clicks": 117
+    },
+    "actor": {
+      "stopped at a wrong board": 0,
+      "ran out of clicks": 152
+    },
+    "actor8+judge": {
+      "stopped at a wrong board": 0,
+      "ran out of clicks": 112
+    }
+  }
+}

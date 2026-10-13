@@ -1,0 +1,48 @@
+IMAGINER trains on 427 transitions (1% of 146 training games)
+79814 transitions | train 61757 | test 18057 (held-out games)
+/root/project/level0/model.py:37: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+   falls (gravity / soft drop)      7485
+   game over                         186
+   hold                             1007
+   line clear                       1962
+   lock + new piece                 9593
+   move sideways                   27908
+   piece still (timer only)        15574
+   rotate                          16099
+trainable params: 3.6M
+changed-patch fraction rho=0.081 -> change weight 11.3
+step     0  latent 1.3526  mask 0.6778
+step  1000  latent 0.3358  mask 0.0267
+step  2000  latent 0.2614  mask 0.0285
+step  3000  latent 0.1579  mask 0.0005
+step  4000  latent 0.1426  mask 0.0002
+step  5000  latent 0.1316  mask 0.0002
+step  6000  latent 0.0909  mask 0.0001
+step  7000  latent 0.0843  mask 0.0001
+step  8000  latent 0.0740  mask 0.0000
+step  9000  latent 0.0718  mask 0.0000
+step 10000  latent 0.0714  mask 0.0000
+step 11000  latent 0.0592  mask 0.0000
+step 12000  latent 0.0583  mask 0.0000
+step 13000  latent 0.0800  mask 0.0000
+step 14000  latent 0.0526  mask 0.0000
+step 15000  latent 0.0550  mask 0.0000
+step 15999  latent 0.0486  mask 0.0000
+
+=== Tetris T0 on held-out games: latent error vs 'nothing changes' (1.00), lower = better ===
+step type                          n   model  wrong key  change-map F1
+falls (gravity / soft drop)      491   0.728      1.276          0.746
+move sideways                   2006   0.726      1.278          0.753
+rotate                          1270   0.816      1.213          0.705
+hold                              98   1.133      1.197          0.581
+lock + new piece                 693   1.286      1.130          0.613
+line clear                       126   0.882      0.949          0.647
+game over                         20   0.880      0.993          0.381
+piece still (timer only)        1296   2.106      5.168          0.466
+
+Board cells that REALLY changed (n=26505): read correctly from the imagined screen
+  model 48.9% | wrong key 39.7% | 'nothing changes' 0% | ceiling (reader on the REAL next screen) 84.1%
+
+KILL TEST: FAIL  (needs error < 0.5 on falls/moves/rotations, wrong key >= 2x worse on moves/rotations, changed cells >= 70% of the reader's ceiling)
+saved /root/project/results/tetris_t0_hist_f0.01_examples.png  (cols: before + key | true after | board READ from the imagined screen | true board)

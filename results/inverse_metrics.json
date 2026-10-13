@@ -1,0 +1,25 @@
+{
+  "n_test": 6000,
+  "labeled": 6396,
+  "functional_accuracy": {
+    "random click": {
+      "all": 0.4706666666666667,
+      "changed": 0.0536639526276832,
+      "reset": 0.01020408163265306,
+      "no-op": 0.812310491206792
+    },
+    "INVERSE (10% labels)": {
+      "all": 0.9155,
+      "changed": 0.8264248704663213,
+      "reset": 0.673469387755102,
+      "no-op": 0.9884778653729533
+    },
+    "IMAGINER as inverse (100% labels)": {
+      "all": 0.9996666666666667,
+      "changed": 0.999259807549963,
+      "reset": 1.0,
+      "no-op": 1.0
+    }
+  },
+  "pseudo_label_functional_accuracy_on_unlabelled_train": 0.9062814855991383
+}

@@ -1,0 +1,99 @@
+<!doctype html>
+<!-- TinyApps (step 3): one page = a different small app per seed (file:///.../tinyapp.html#SEED).
+     Widget vocabulary: toggle, checkbox, counter (- / +), radio group, dropdown (opens a menu), button -> dialog
+     (OK / Cancel), tabs. Random theme, layout, labels and wiring ("this toggle disables that widget").
+     window.__state / window.__set(state) as the other apps; window.__spec = the generated app. Square corners only
+     (rounded corners anti-alias differently after partial repaints). -->
+<html><head><meta charset="utf-8"><style>
+html, body { margin: 0; width: 224px; height: 224px; overflow: hidden; font-family: Arial, sans-serif; }
+* { box-sizing: border-box; user-select: none; }
+.row { position: absolute; left: 0; width: 224px; display: flex; align-items: center; }
+.btn { position: absolute; display: flex; align-items: center; justify-content: center; cursor: default; }
+.off { opacity: 0.35; }
+</style></head><body><div id="root"></div><script>
+const SEED = parseInt(location.hash.slice(1)) || 0;
+function mulberry(a) { return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a);
+  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const R = mulberry(SEED * 7919 + 13), ri = n => Math.floor(R() * n), pick = a => a[ri(a.length)];
+const WORDS = ["Wi-Fi", "Sound", "Sync", "Alerts", "Backup", "Night", "Bold", "Grid", "Auto", "Share", "Lock", "Cloud",
+  "Music", "Photos", "Mail", "Maps", "Size", "Speed", "Level", "Mode", "Theme", "Color", "Zoom", "Quality", "Volume",
+  "Timer", "Repeat", "Shuffle", "Save", "Export", "Reset", "Delete", "Print", "Upload", "Login", "Filter", "Sort"];
+const OPTS = ["Low", "Mid", "High", "Max", "Off", "On", "A", "B", "C", "Red", "Blue", "Green", "Small", "Large", "Fast", "Slow"];
+const KINDS = ["toggle", "check", "counter", "radio", "dropdown", "dialog"];
+
+// ---------------------------------------------------------------- generate the app from the seed
+const hue = ri(360), hue2 = (hue + 90 + ri(180)) % 360;
+const T = { bg: `hsl(${hue},${20 + ri(40)}%,${90 + ri(8)}%)`, fg: `hsl(${hue},30%,${10 + ri(15)}%)`,
+  acc: `hsl(${hue2},${50 + ri(30)}%,${35 + ri(20)}%)`, line: `hsl(${hue},20%,${60 + ri(15)}%)`, font: 10 + ri(4) };
+const nTabs = pick([1, 1, 2, 3]), tabNames = Array.from({ length: nTabs }, () => pick(WORDS));
+const rowH = 26 + ri(10), top0 = nTabs > 1 ? 30 : 6 + ri(10), ctlX = 120 + ri(40), labX = 6 + ri(16);
+const W = [];  // widgets
+for (let t = 0; t < nTabs; t++) {
+  const n = 2 + ri(Math.min(3, Math.floor((224 - top0) / rowH) - 1));
+  for (let i = 0; i < n; i++) {
+    const kind = pick(KINDS), w = { kind, tab: t, row: i, label: pick(WORDS), dep: -1 };
+    if (kind === "counter") w.max = 3 + ri(7);
+    if (kind === "radio" || kind === "dropdown") w.opts = Array.from({ length: 3 }, (_, j) => OPTS[(ri(OPTS.length) + j * 5) % OPTS.length]);
+    W.push(w);
+  }
+}
+for (const w of W) {  // wiring: a toggle/checkbox may switch another widget of its tab on/off
+  const masters = W.filter(m => m.tab === w.tab && m !== w && (m.kind === "toggle" || m.kind === "check"));
+  if (masters.length && R() < 0.35) w.dep = W.indexOf(pick(masters));
+}
+for (const w of W) if (w.dep >= 0 && W[w.dep].dep === W.indexOf(w)) w.dep = -1;  // no 2-cycles
+const init = () => ({ tab: 0, menu: -1, dialog: -1, v: W.map(w => w.kind === "toggle" || w.kind === "check" ? ri(2) : 0) });
+let S = init();
+window.__spec = { seed: SEED, tabs: nTabs, widgets: W.map(({ kind, tab, dep }) => ({ kind, tab, dep })) };
+
+// ---------------------------------------------------------------- render
+const root = document.getElementById("root");
+const el = (tag, css, parent, text) => { const e = document.createElement(tag); e.style.cssText = css; if (text !== undefined) e.textContent = text; parent.appendChild(e); return e; };
+const on = (i) => W[i].dep < 0 || S.v[W[i].dep] === 1;
+function act(f) { return ev => { ev.stopPropagation(); f(); render(); }; }
+function render() {
+  root.innerHTML = "";
+  const app = el("div", `position:absolute;left:0;top:0;width:224px;height:224px;background:${T.bg};color:${T.fg};font-size:${T.font}px`, root);
+  app.onclick = () => { if (S.menu >= 0) { S.menu = -1; render(); } };  // click outside an open menu closes it
+  if (nTabs > 1) tabNames.forEach((nm, t) => {
+    const b = el("div", `left:${t * (224 / nTabs)}px;top:0;width:${224 / nTabs}px;height:24px;border-bottom:3px solid ${t === S.tab ? T.acc : T.line};font-weight:${t === S.tab ? "bold" : "normal"}`, app, nm);
+    b.className = "btn"; b.dataset.hit = 1;
+    b.onclick = act(() => { if (S.menu < 0 && S.dialog < 0) S.tab = t; else S.menu = -1; });
+  });
+  W.forEach((w, i) => {
+    if (w.tab !== S.tab) return;
+    const y = top0 + w.row * rowH, row = el("div", `top:${y}px;height:${rowH}px`, app);
+    row.className = "row" + (on(i) ? "" : " off");
+    el("div", `position:absolute;left:${labX}px`, row, w.label);
+    const C = (x, wd, txt, css, f) => { const b = el("div", `left:${x}px;top:${(rowH - 18) / 2}px;width:${wd}px;height:18px;${css}`, row, txt);
+      b.className = "btn"; b.dataset.hit = 1; b.onclick = act(() => { if (S.menu >= 0) { S.menu = -1; return; } if (S.dialog < 0 && on(i)) f(); }); return b; };
+    const v = S.v[i];
+    if (w.kind === "toggle") { const b = C(ctlX, 34, "", `background:${v ? T.acc : T.line}`, () => S.v[i] = 1 - v);
+      el("div", `position:absolute;top:2px;left:${v ? 18 : 2}px;width:14px;height:14px;background:#fff`, b); }
+    if (w.kind === "check") C(ctlX, 18, "", `border:2px solid ${T.acc};background:${v ? T.acc : "transparent"}`, () => S.v[i] = 1 - v);
+    if (w.kind === "counter") { C(ctlX, 18, "-", `border:1px solid ${T.line}`, () => S.v[i] = Math.max(0, v - 1));
+      el("div", `position:absolute;left:${ctlX + 20}px;width:22px;text-align:center`, row, String(v));
+      C(ctlX + 44, 18, "+", `border:1px solid ${T.line}`, () => S.v[i] = Math.min(w.max, v + 1)); }
+    if (w.kind === "radio") w.opts.forEach((o, j) => C(ctlX - 50 + j * 34, 32, o, `border:1px solid ${T.line};${j === v ? `background:${T.acc};color:#fff` : ""}`, () => S.v[i] = j));
+    if (w.kind === "dropdown") C(ctlX, 70, w.opts[v] + " v", `border:1px solid ${T.line};background:#fff`, () => S.menu = i);
+    if (w.kind === "dialog") C(ctlX, 60, v ? "Done" : w.label, `background:${v ? T.line : T.acc};color:#fff`, () => S.dialog = i);
+  });
+  if (S.menu >= 0) {  // open dropdown menu, drawn over the rows below it
+    const w = W[S.menu], y = top0 + w.row * rowH + (rowH + 18) / 2;
+    w.opts.forEach((o, j) => { const b = el("div", `left:${ctlX}px;top:${y + j * 20}px;width:70px;height:20px;background:#fff;border:1px solid ${T.fg};${j === S.v[S.menu] ? "font-weight:bold" : ""}`, app, o);
+      b.className = "btn"; b.dataset.hit = 1; b.onclick = act(() => { S.v[S.menu] = j; S.menu = -1; }); });
+  }
+  if (S.dialog >= 0) {  // modal dialog: only OK / Cancel do anything
+    const sh = el("div", "position:absolute;left:0;top:0;width:224px;height:224px;background:rgba(0,0,0,0.4)", app);
+    sh.onclick = ev => ev.stopPropagation();
+    const box = el("div", `position:absolute;left:32px;top:62px;width:160px;height:90px;background:${T.bg};border:2px solid ${T.fg}`, sh);
+    el("div", "position:absolute;left:10px;top:12px", box, W[S.dialog].label + "?");
+    [["OK", 10, () => { S.v[S.dialog] = 1; S.dialog = -1; }], ["Cancel", 84, () => { S.dialog = -1; }]].forEach(([t, x, f]) => {
+      const b = el("div", `left:${x}px;top:54px;width:62px;height:24px;background:${t === "OK" ? T.acc : T.line};color:#fff`, box, t);
+      b.className = "btn"; b.dataset.hit = 1; b.onclick = act(f); });
+  }
+}
+window.__set = s => { S = JSON.parse(JSON.stringify(s)); render(); };
+Object.defineProperty(window, "__state", { get: () => JSON.parse(JSON.stringify(S)) });
+render();
+</script></body></html>

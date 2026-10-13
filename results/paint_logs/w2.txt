@@ -1,0 +1,6 @@
+w2 step      0  0.0 steps/s
+w2 step   2000  7.3 steps/s
+w2 step   4000  7.4 steps/s
+w2 step   6000  7.4 steps/s
+w2 step   8000  7.4 steps/s
+w2 done: 10000 steps (7839 strokes, 2161 clicks); determinism check passed

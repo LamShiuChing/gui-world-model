@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags (brand-safe phrasing) -->
+  <title>Monochrome Rush - Minimalist High-Gravity Block Stack</title>
+  <meta name="description"
+    content="Drop into Monochrome Rush: a minimalist, fan-made, browser-based block stack with high gravity, fast locks, and an addictive single mode built for flow. Practice tight spins, quick clears, and leaderboard runs without downloads.">
+  <meta name="keywords"
+    content="block puzzle challenge, falling blocks speed, browser puzzle game, stacking trainer, monochrome rush, high gravity puzzle, leaderboard speed run, fast lock delay, competitive puzzle players">
+  <meta name="author" content="Eric Lam">
+  <link rel="canonical" href="https://monochrome-rush.com/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://monochrome-rush.com/">
+  <meta property="og:title" content="Monochrome Rush - High-Gravity Block Stack">
+  <meta property="og:description"
+    content="Push your limits in a minimalist, fast-paced block-stacking mode with quick locks, sharp spins, and leaderboard runs.">
+  <meta property="og:image" content="https://monochrome-rush.com/preview-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://monochrome-rush.com/">
+  <meta property="twitter:title" content="Monochrome Rush - High-Gravity Block Stack">
+  <meta property="twitter:description"
+    content="Minimalist speed block stack with one fast mode, crisp controls, and a focus on flow and leaderboard chases.">
+  <meta property="twitter:image" content="https://monochrome-rush.com/preview-image.jpg">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./src/style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Monochrome Rush",
+    "description": "A minimalist, high-speed block stacking game designed for focus and flow.",
+    "genre": ["Puzzle", "Arcade"],
+    "playMode": "SinglePlayer",
+    "applicationCategory": "Game",
+    "operatingSystem": "Any",
+    "author": {
+      "@type": "Person",
+      "name": "Eric Lam"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Monochrome Rush built for players who want a tougher falling-block challenge?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Monochrome Rush uses fast gravity, snappy locks, and a focused single mode to help competitive players sharpen stacking, spins, and downstacking in a familiar falling-block ruleset."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What makes the gameplay feel different?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The single mode leans on high gravity and short lock delay. A modern rotation system lets pieces kick off walls for tight spins while a seven-piece bag randomizer keeps shape droughts rare."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do leaderboards work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Submit your score and clear time after a run to appear on the global leaderboard. Compete for Rank 1 by optimizing pieces, reducing misdrops, and chaining line clears."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <nav id="top-nav">
+    <div class="nav-logo">MONOCHROME RUSH</div>
+    <ul class="nav-links">
+      <li><a href="#" class="nav-item active" data-target="play-section">PLAY</a></li>
+      <li><a href="#" class="nav-item" data-target="about-section">ABOUT</a></li>
+      <li><a href="#" class="nav-item" data-target="leaderboard-section">LEADERBOARD</a></li>
+      <li><a href="#" class="nav-item" data-target="donate-section">DONATE</a></li>
+    </ul>
+    <div class="nav-theme-toggle">
+      <label class="switch nav-switch">
+        <input type="checkbox" id="theme-toggle">
+        <span class="slider round"></span>
+      </label>
+      <span id="theme-label" class="nav-theme-label">INK</span>
+    </div>
+  </nav>
+
+  <div id="app">
+    <main>
+      <!-- PLAY SECTION -->
+      <section id="play-section" class="page-section active">
+        <div class="game-container">
+          <canvas id="gameCanvas" width="950" height="800"></canvas>
+
+          <div id="ui-layer">
+            <div id="score-display">SCORE: 0</div>
+            <div id="level-display">LEVEL: 0</div>
+            <div id="lines-display">LINES: 0</div>
+            <div id="time-display">00:00.00</div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ABOUT SECTION -->
+      <section id="about-section" class="page-section hidden">
+        <div class="content-container about-minimal">
+          <h1>Monochrome Rush</h1>
+          <p class="intro">A minimalist, browser-based block stack. One mode. High gravity. Fast locks. No clutter.</p>
+
+          <div class="about-block">
+            <h2>Controls</h2>
+            <ul>
+              <li>← → move &nbsp;·&nbsp; ↓ soft drop &nbsp;·&nbsp; Space hard drop</li>
+              <li>Z / X rotate &nbsp;·&nbsp; C hold &nbsp;·&nbsp; ESC pause</li>
+            </ul>
+          </div>
+
+          <div class="about-block">
+            <h2>Credits</h2>
+            <ul>
+              <li><strong>Eric Lam</strong> — Developer</li>
+            </ul>
+          </div>
+
+          <p class="legal-note">Fan-made. Not affiliated with The Tetris Company.</p>
+        </div>
+      </section>
+
+      <!-- LEADERBOARD SECTION -->
+      <section id="leaderboard-section" class="page-section hidden">
+        <div class="content-container">
+          <div class="leaderboard-header">
+            <h1>Leaderboard</h1>
+            <button id="leaderboard-refresh-btn" class="btn-secondary" title="Refresh leaderboard">&#8635;</button>
+          </div>
+          <div id="leaderboard-loading"><div class="spinner"></div></div>
+          <div id="leaderboard-content" class="leaderboard-placeholder hidden">
+            <div id="leaderboard-list">
+              <!-- Dynamic Rows will be injected here -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DONATE SECTION -->
+      <section id="donate-section" class="page-section hidden">
+        <div class="content-container donate-container">
+          <p class="donate-intro">Monochrome Rush is free, ad-free, and built for players — if you want to keep the leaderboard running, this is how.</p>
+          <button id="confirm-donate-btn">PROCEED TO DONATE ($1)</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="menu-overlay" class="overlay">
+      <div class="logo-icon">
+        <div class="logo-block"></div>
+        <div class="logo-block"></div>
+        <div class="logo-block"></div>
+        <div class="logo-block"></div>
+      </div>
+      <h1>MONOCHROME RUSH</h1>
+      <div class="menu-item level-selector-container">
+        <label for="start-level">START LEVEL: <span id="start-level-value">1</span></label>
+        <input type="range" id="start-level" min="1" max="25" value="1">
+      </div>
+
+      <button id="start-btn">START GAME</button>
+      <button id="menu-settings-btn">SETTINGS</button>
+    </div>
+
+    <div id="game-over-overlay" class="overlay hidden">
+      <h1>GAME OVER</h1>
+      <div id="final-score">SCORE: 0</div>
+
+      <div id="highscore-form" class="hidden">
+        <label for="player-name" id="player-name-label">ENTER YOUR NAME FOR THE LEADERBOARD</label>
+        <input type="text" id="player-name" placeholder="YOUR NAME" maxlength="15" autocapitalize="none" autocomplete="off">
+        <button id="submit-score-btn">SUBMIT SCORE</button>
+      </div>
+
+      <div id="score-submit-success" class="hidden">SCORE SUBMITTED!</div>
+      <button id="restart-btn">RETRY</button>
+      <button id="back-to-menu-btn">MAIN MENU</button>
+      <button id="view-leaderboard-btn">LEADERBOARD</button>
+    </div>
+
+    <div id="victory-overlay" class="overlay hidden">
+      <h1>VICTORY!</h1>
+      <div class="victory-details">
+        <div>MASTER RANK ACHIEVED</div>
+        <div id="victory-score">SCORE: 0</div>
+        <div id="victory-time">TIME: 00:00.00</div>
+      </div>
+      <button id="victory-restart-btn">PLAY AGAIN</button>
+    </div>
+  </div>
+  <div id="pause-overlay" class="overlay hidden">
+    <h1>PAUSED</h1>
+    <div class="breathe-ring"></div>
+    <p class="breathe-label">breathe</p>
+    <button id="resume-btn">RESUME</button>
+    <button id="pause-restart-btn">RESTART</button>
+    <button id="pause-settings-btn">SETTINGS</button>
+    <button id="pause-menu-btn">MAIN MENU</button>
+  </div>
+
+  <div id="settings-overlay" class="overlay hidden">
+    <h1>SETTINGS</h1>
+
+    <div class="settings-tabs">
+      <button class="settings-tab active" data-tab="general">GENERAL</button>
+      <button class="settings-tab" data-tab="keybinds">KEYBINDS</button>
+    </div>
+
+    <div class="settings-panel" id="tab-general">
+      <div class="setting-row">
+        <div class="setting-label">
+          <span>DAS</span>
+          <span id="das-value-display">100 ms</span>
+        </div>
+        <input type="range" id="das-slider" min="0" max="300" value="100" step="1">
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-label">
+          <span>ARR</span>
+          <span id="arr-value-display">30 ms</span>
+        </div>
+        <input type="range" id="arr-slider" min="0" max="100" value="30" step="1">
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-label">
+          <span>SCREEN SHAKE</span>
+          <span id="shake-value-display">100 %</span>
+        </div>
+        <input type="range" id="shake-slider" min="0" max="100" value="100" step="10">
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-label">
+          <span>SFX VOLUME</span>
+          <span id="sfx-value-display">100 %</span>
+        </div>
+        <input type="range" id="sfx-slider" min="0" max="100" value="100" step="10">
+      </div>
+
+      <div class="setting-row setting-toggle-row">
+        <span class="setting-label-text">LINE CLEAR FLASH</span>
+        <label class="switch">
+          <input type="checkbox" id="lineclear-toggle" checked>
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <button id="reset-general-btn">RESET TO DEFAULTS</button>
+    </div>
+
+    <div class="settings-panel hidden" id="tab-keybinds">
+      <div class="keybind-row">
+        <span class="keybind-label">MOVE LEFT</span>
+        <button class="key-btn" data-action="moveLeft"></button>
+      </div>
+      <div class="keybind-row">
+        <span class="keybind-label">MOVE RIGHT</span>
+        <button class="key-btn" data-action="moveRight"></button>
+      </div>
+      <div class="keybind-row">
+        <span class="keybind-label">SOFT DROP</span>
+        <button class="key-btn" data-action="softDrop"></button>
+      </div>
+      <div class="keybind-row">
+        <span class="keybind-label">ROTATE CCW</span>
+        <button class="key-btn" data-action="rotateCCW"></button>
+      </div>
+      <div class="keybind-row">
+        <span class="keybind-label">ROTATE CW</span>
+        <button class="key-btn" data-action="rotateCW"></button>
+      </div>
+      <div class="keybind-row">
+        <span class="keybind-label">HARD DROP</span>
+        <button class="key-btn" data-action="hardDrop"></button>
+      </div>
+      <div class="keybind-row">
+        <span class="keybind-label">HOLD</span>
+        <button class="key-btn" data-action="hold"></button>
+      </div>
+      <button id="reset-keybinds-btn">RESET TO DEFAULTS</button>
+    </div>
+
+    <button id="settings-close-btn">CLOSE</button>
+  </div>
+
+  <div id="toast-notification" class="hidden"></div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>

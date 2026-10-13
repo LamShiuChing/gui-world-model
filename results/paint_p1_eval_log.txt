@@ -1,0 +1,20 @@
+40000 transitions | train 30000 | test 10000 (held-out worker 3)
+   clear canvas                 1467
+   click, nothing happens       1852
+   colour pick                  5352
+   stroke does nothing           205
+   stroke draws                31124
+changed-patch fraction rho=0.045 -> change weight 21.1
+
+=== Paint P1 on the held-out worker: latent error vs 'nothing changes' (1.00), lower = better ===
+step type                      n   model  wrong stroke  change-map IoU
+stroke draws                4692   0.414         1.447           0.908
+colour pick                  780   0.701        17.023           0.999
+clear canvas                 206   0.044         0.766           0.949
+stroke does nothing           26  49.381        16.637           0.010
+click, nothing happens       296       -             -               -
+
+Colour of the newly drawn line, read from the IMAGINED screen: 97.3% (reader on the REAL next screen: 96.5%; chance 25%)
+
+KILL TEST: PASS  (needs stroke error < 0.5, wrong stroke >= 2x worse, change-map IoU >= 0.5, colour >= 80%)
+saved D:\Latent Action-conditioned Prediction of Interface States\results\paint_p1_examples.png  (cols: before + stroke (magenta, circle = end) | true after | true change | predicted change)

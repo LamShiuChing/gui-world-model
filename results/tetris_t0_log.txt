@@ -1,0 +1,37 @@
+79814 transitions | train 61757 | test 18057 (held-out games)
+   falls (gravity / soft drop)      7485
+   game over                         186
+   hold                             1007
+   line clear                       1962
+   lock + new piece                 9593
+   move sideways                   27908
+   piece still (timer only)        15574
+   rotate                          16099
+trainable params: 3.5M
+changed-patch fraction rho=0.066 -> change weight 14.2
+step     0  latent 1.2063  mask 0.8445
+step  1000  latent 0.8556  mask 0.1121
+step  2000  latent 0.5196  mask 0.0941
+step  3000  latent 0.8922  mask 0.0951
+step  4000  latent 0.3661  mask 0.0490
+step  5000  latent 0.4478  mask 0.0618
+step  6000  latent 0.3390  mask 0.0377
+step  7000  latent 0.3160  mask 0.0309
+step  7999  latent 0.2864  mask 0.0295
+
+=== Tetris T0 on held-out games: latent error vs 'nothing changes' (1.00), lower = better ===
+step type                          n   model  wrong key  change-map F1
+falls (gravity / soft drop)      486   0.483      1.063          0.905
+move sideways                   1959   0.511      1.134          0.891
+rotate                          1271   0.583      1.206          0.861
+hold                              96   0.688      1.172          0.804
+lock + new piece                 730   0.683      0.917          0.820
+line clear                       114   0.528      0.865          0.840
+game over                         15   0.593      0.763          0.488
+piece still (timer only)        1329   2.859      4.574          0.683
+
+Board cells that REALLY changed (n=26549): read correctly from the imagined screen
+  model 66.6% | wrong key 40.9% | 'nothing changes' 0% | ceiling (reader on the REAL next screen) 83.9%
+
+KILL TEST: FAIL  (needs error < 0.5 on falls/moves/rotations, wrong key >= 2x worse on moves/rotations, changed cells >= 70% of the reader's ceiling)
+saved D:\Latent Action-conditioned Prediction of Interface States\results\tetris_t0_examples.png  (cols: before + key | true after | board READ from the imagined screen | true board)

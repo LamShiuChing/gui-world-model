@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  /* 224x224 settings app. Deterministic: the picture depends only on the state (no animation, no hover). */
+  * { box-sizing: border-box; transition: none !important; animation: none !important; }
+  body { margin: 0; width: 224px; height: 224px; font-family: Arial, sans-serif; overflow: hidden; user-select: none;
+         background: var(--bg); color: var(--fg); }
+  body.light { --bg: #f4f4f4; --fg: #222; --card: #fff; --line: #ccc; --on: #2a7de1; --off: #bbb; }
+  body.dark  { --bg: #1d1f23; --fg: #eee; --card: #2b2e34; --line: #555; --on: #49a0ff; --off: #666; }
+  #title { position: absolute; top: 0; left: 0; width: 224px; height: 24px; line-height: 24px; padding-left: 8px; font-weight: bold; font-size: 14px; }
+  .row { position: absolute; left: 6px; width: 212px; height: 30px; background: var(--card); border: 1px solid var(--line); }
+  .lab { position: absolute; left: 8px; top: 0; line-height: 28px; }
+  .tog { position: absolute; right: 8px; top: 6px; width: 34px; height: 16px; border-radius: 8px; background: var(--off); }
+  .tog.on { background: var(--on); }
+  .tog::after { content: ''; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 6px; background: #fff; }
+  .tog.on::after { left: 20px; }
+  #track { position: absolute; left: 62px; top: 13px; width: 110px; height: 4px; background: var(--off); }
+  #track::before { content: ''; position: absolute; left: -7px; right: -7px; top: -8px; height: 20px; }  /* bigger hit area */
+  #fill { position: absolute; left: 0; top: 0; height: 4px; background: var(--on); }
+  #knob { position: absolute; top: -5px; width: 14px; height: 14px; border-radius: 7px; background: var(--on); margin-left: -7px; }
+  #vol { position: absolute; right: 8px; line-height: 28px; width: 26px; text-align: right; }
+  #font { position: absolute; right: 8px; top: 4px; width: 84px; height: 20px; line-height: 18px; border: 1px solid var(--line); padding-left: 6px; background: var(--bg); }
+  #menu { position: absolute; left: 128px; top: 133px; width: 84px; border: 1px solid var(--fg); background: var(--card); display: none; z-index: 2; }
+  #menu div { height: 20px; line-height: 20px; padding-left: 6px; }
+  #menu div.sel { background: var(--on); color: #fff; }
+  .chk { position: absolute; right: 10px; top: 7px; width: 14px; height: 14px; border: 2px solid var(--fg); text-align: center; line-height: 9px; font-size: 13px; font-weight: bold; }
+  #reset { position: absolute; left: 150px; top: 196px; width: 66px; height: 22px; line-height: 20px; text-align: center; border: 1px solid var(--line); background: var(--card); }
+</style>
+</head>
+<body class="light">
+<div id="title">Settings</div>
+<div class="row" style="top:26px"><span class="lab">Dark mode</span><div class="tog" id="dark"></div></div>
+<div class="row" style="top:60px"><span class="lab">Wi-Fi</span><div class="tog" id="wifi"></div></div>
+<div class="row" style="top:94px"><span class="lab">Volume</span><div id="track"><div id="fill"></div><div id="knob"></div></div><span id="vol"></span></div>
+<div class="row" style="top:128px"><span class="lab">Font size</span><div id="font"></div></div>
+<div class="row" style="top:162px"><span class="lab">Notifications</span><div class="chk" id="notif"></div></div>
+<div id="reset">Reset</div>
+<div id="menu"><div>Small</div><div>Medium</div><div>Large</div></div>
+<script>
+  const FONTS = ['Small', 'Medium', 'Large'], SIZES = [11, 13, 15];
+  const DEFAULT = { dark: false, wifi: true, volume: 50, font: 1, notif: true, menu: false };
+  let s = { ...DEFAULT }, dragging = false;
+  const $ = id => document.getElementById(id);
+  function render() {
+    document.body.className = s.dark ? 'dark' : 'light';
+    $('dark').classList.toggle('on', s.dark); $('wifi').classList.toggle('on', s.wifi);
+    $('fill').style.width = (s.volume * 1.1) + 'px'; $('knob').style.left = (s.volume * 1.1) + 'px'; $('vol').textContent = s.volume;
+    $('font').textContent = FONTS[s.font] + ' ▾';
+    document.querySelectorAll('.lab').forEach(e => e.style.fontSize = SIZES[s.font] + 'px');
+    $('notif').textContent = s.notif ? '✓' : '';
+    $('menu').style.display = s.menu ? 'block' : 'none';
+    [...$('menu').children].forEach((e, i) => e.classList.toggle('sel', i === s.font));
+    window.__state = JSON.parse(JSON.stringify(s));
+  }
+  const volAt = x => Math.max(0, Math.min(100, Math.round((x - $('track').getBoundingClientRect().left) / 1.1 / 10) * 10));
+  document.addEventListener('mousedown', e => {
+    const t = e.target;
+    if (s.menu) {                                   // an open menu takes the next click
+      const i = [...$('menu').children].indexOf(t);
+      if (i >= 0) s.font = i;
+      s.menu = false; render(); return;
+    }
+    if (t.id === 'dark') s.dark = !s.dark;
+    else if (t.id === 'wifi') s.wifi = !s.wifi;
+    else if (t.id === 'notif') s.notif = !s.notif;
+    else if (t.id === 'font') s.menu = true;
+    else if (t.id === 'reset') s = { ...DEFAULT };
+    else if (t.id === 'track' || t.id === 'fill' || t.id === 'knob') { dragging = true; s.volume = volAt(e.clientX); }
+    render();
+  });
+  document.addEventListener('mousemove', e => { if (dragging) { s.volume = volAt(e.clientX); render(); } });
+  document.addEventListener('mouseup', () => { dragging = false; });
+  window.__set = st => { s = { ...st }; dragging = false; render(); };  // for reproducible rendering of a state
+  render();
+</script>
+</body>
+</html>

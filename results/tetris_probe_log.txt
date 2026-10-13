@@ -1,0 +1,6 @@
+3000 frames, filled-cell rate 32.7%; test frames 587
+224px (256 tokens): cell accuracy 92.41%  balanced 91.44%  whole board exactly right 0.5%
+336px (576 tokens): cell accuracy 97.86%  balanced 97.63%  whole board exactly right 4.3%
+patches changed 100->101 with pixel threshold 0: 100.0%
+patches changed 100->101 with pixel threshold 8: 10.9%
+patches changed 100->101 with pixel threshold 16: 10.2%

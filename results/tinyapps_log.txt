@@ -1,0 +1,14 @@
+/root/project/level0/tinyapps_train.py:20: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  q = torch.from_numpy(np.load(D / "feats.q8.npy", mmap_mode="r")[:]).to(dev)  # int8 on the GPU
+69892 screens, 330000 actions, 59% change the screen
+change map: patch energy > 0.190 -> 0.431 of patches changed, weight 1.3
+/root/project/level0/model.py:37: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+N=   10 apps (  3000 actions): unseen apps, right next screen on changes 8.2% (wrong click 4.0%), no-ops 95.8% | error vs nothing-changes 0.719 (wrong click 0.968)
+/root/project/level0/model.py:37: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+N=   30 apps (  9000 actions): unseen apps, right next screen on changes 22.9% (wrong click 5.6%), no-ops 99.0% | error vs nothing-changes 0.470 (wrong click 0.968)
+N=  100 apps ( 30000 actions): unseen apps, right next screen on changes 37.4% (wrong click 6.4%), no-ops 99.2% | error vs nothing-changes 0.334 (wrong click 0.987)
+N=  300 apps ( 90000 actions): unseen apps, right next screen on changes 40.6% (wrong click 6.4%), no-ops 99.6% | error vs nothing-changes 0.288 (wrong click 0.970)
+N= 1000 apps (300000 actions): unseen apps, right next screen on changes 41.9% (wrong click 6.6%), no-ops 99.7% | error vs nothing-changes 0.271 (wrong click 0.953)
+saved /root/project/results/tinyapps_curve.png

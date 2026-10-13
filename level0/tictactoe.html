@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  /* 224x224 page = exactly one DINOv2 input; no hover/animation so the image depends only on the state */
+  * { box-sizing: border-box; transition: none !important; animation: none !important; }
+  body { margin: 0; width: 224px; height: 224px; background: #fff; font-family: Arial, sans-serif; overflow: hidden; }
+  #status { position: absolute; top: 0; left: 0; width: 224px; height: 22px; line-height: 22px; text-align: center; font-size: 14px; font-weight: bold; }
+  #board { position: absolute; top: 24px; left: 22px; width: 180px; height: 180px; display: grid; grid-template-columns: repeat(3, 60px); }
+  .cell { width: 60px; height: 60px; border: 1px solid #333; font-size: 40px; line-height: 58px; text-align: center; font-weight: bold; }
+  .X { color: #1a3fa8; } .O { color: #b0201a; }
+  #reset { position: absolute; top: 206px; left: 82px; width: 60px; height: 16px; font-size: 11px; line-height: 14px; text-align: center; border: 1px solid #333; background: #eee; }
+</style>
+</head>
+<body>
+<div id="status"></div>
+<div id="board"></div>
+<div id="reset">Reset</div>
+<script>
+  const LINES = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  let s;
+  function reset() { s = { board: Array(9).fill(null), turn: 'X', winner: null }; render(); }
+  function play(i) {
+    if (s.winner || s.board[i]) return;               // clicks on finished games / filled cells do nothing
+    s.board[i] = s.turn;
+    for (const [a, b, c] of LINES)
+      if (s.board[a] && s.board[a] === s.board[b] && s.board[a] === s.board[c]) s.winner = s.board[a];
+    if (!s.winner && s.board.every(Boolean)) s.winner = 'draw';
+    s.turn = s.turn === 'X' ? 'O' : 'X';
+    render();
+  }
+  function render() {
+    document.getElementById('status').textContent =
+      s.winner === 'draw' ? 'Draw' : s.winner ? `${s.winner} wins!` : `${s.turn} to move`;
+    document.getElementById('board').innerHTML =
+      s.board.map((v, i) => `<div class="cell ${v || ''}" onclick="play(${i})">${v || ''}</div>`).join('');
+    window.__state = JSON.parse(JSON.stringify(s));
+  }
+  document.getElementById('reset').onclick = reset;
+  reset();
+</script>
+</body>
+</html>

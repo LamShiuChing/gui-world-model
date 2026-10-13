@@ -1,0 +1,20 @@
+[
+  {
+    "food_per_game": 1.5,
+    "food_max": 6,
+    "steps_survived": 67.9,
+    "died": 0.9,
+    "decision_ms_median": 22.441599998273887,
+    "round": 0,
+    "selfplay_transitions": 0
+  },
+  {
+    "food_per_game": 2.85,
+    "food_max": 7,
+    "steps_survived": 131.65,
+    "died": 0.8,
+    "decision_ms_median": 75.99209999898449,
+    "round": 1,
+    "selfplay_transitions": 879
+  }
+]

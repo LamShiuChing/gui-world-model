@@ -1,0 +1,24 @@
+--- ttt 1%
+--- ttt 3%
+--- ttt 10%
+--- ttt 30%
+--- settings 1%
+--- settings 3%
+--- settings 10%
+--- settings 30%
+--- settings 100%
+--- files 1%
+--- files 3%
+--- files 10%
+--- files 30%
+--- snake 1%
+--- snake 3%
+--- snake 10%
+--- snake 30%
+
+app       data used: score (training actions)
+ttt             1%: 0.844 (636)       3%: 0.965 (2026)      10%: 0.982 (6589)     30%: 0.990 (19435)    100%: 0.993 (63962)   <- right next board (changes)
+settings        1%: 0.487 (215)        3%: 0.761 (588)      10%: 0.808 (1935)      30%: 0.911 (5856)    100%: 0.935 (19446)   <- right next screen (changes)
+files           1%: 0.208 (270)        3%: 0.293 (769)      10%: 0.388 (2592)      30%: 0.378 (8002)    100%: 0.372 (26208)   <- right next screen (changes)
+snake           1%: 0.699 (326)        3%: 0.449 (980)      10%: 0.315 (3267)      30%: 0.250 (9802)    100%: 0.233 (32675)   <- turn error vs no-change (lower = better)
+saved /root/project/results/data_curve.png

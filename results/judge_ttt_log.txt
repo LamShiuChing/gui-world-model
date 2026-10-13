@@ -1,0 +1,17 @@
+step     0  loss 2.2232
+step  1000  loss 0.7494
+step  2000  loss 0.4957
+step  3000  loss 0.5619
+step  4000  loss 0.5846
+step  5000  loss 0.5003
+step  5999  loss 0.4630
+
+=== ttt: judge on held-out start screens (true steps from the full experience graph) ===
+true steps     n   exact  within 1  mean guess | ranking: judge  vs  MSE
+         1   300   93.3%    100.0%        1.09 |        100.0%   64.3%
+         2   300   69.0%     83.0%        2.73 |         89.0%   36.0%
+         3   300   37.7%     72.0%        4.29 |         75.7%   24.3%
+         4   300   36.7%     68.7%        5.00 |         79.3%   33.3%
+         5   300   31.7%     68.7%        5.81 |         87.0%   33.7%
+         6   300   47.7%     85.3%        6.47 |         98.0%   46.7%
+         7   300   76.7%     97.3%        7.17 |          nan%    nan%

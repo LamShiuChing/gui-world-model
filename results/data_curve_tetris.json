@@ -1,0 +1,24 @@
+{
+  "tetris": [
+    {
+      "frac": 0.01,
+      "train_actions": 427,
+      "score": 0.48896434634974534
+    },
+    {
+      "frac": 0.05,
+      "train_actions": 3533,
+      "score": 0.6002266717038156
+    },
+    {
+      "frac": 0.2,
+      "train_actions": 9914,
+      "score": 0.6347481607243917
+    },
+    {
+      "frac": 1.0,
+      "train_actions": 61757,
+      "score": 0.7139858304906849
+    }
+  ]
+}

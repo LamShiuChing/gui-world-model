@@ -1,0 +1,105 @@
+{
+  "n": 240,
+  "same_screen_threshold": 0.08217190504074097,
+  "success": {
+    "all": {
+      "n": 240,
+      "think 1": 0.625,
+      "think 2": 0.85,
+      "think 3": 0.8791666666666667,
+      "think 4": 0.8666666666666667,
+      "think 5": 0.8791666666666667,
+      "random": 0.016666666666666666,
+      "extra_clicks_think 5": 0.023696682464454975
+    },
+    "2 clicks away": {
+      "n": 60,
+      "think 1": 0.9166666666666666,
+      "think 2": 0.9333333333333333,
+      "think 3": 0.9333333333333333,
+      "think 4": 0.9333333333333333,
+      "think 5": 0.9333333333333333,
+      "random": 0.06666666666666667,
+      "extra_clicks_think 5": 0.0
+    },
+    "3 clicks away": {
+      "n": 60,
+      "think 1": 0.7333333333333333,
+      "think 2": 0.9333333333333333,
+      "think 3": 0.95,
+      "think 4": 0.95,
+      "think 5": 0.95,
+      "random": 0.0,
+      "extra_clicks_think 5": 0.017543859649122806
+    },
+    "4 clicks away": {
+      "n": 60,
+      "think 1": 0.5,
+      "think 2": 0.9,
+      "think 3": 0.9166666666666666,
+      "think 4": 0.9166666666666666,
+      "think 5": 0.9166666666666666,
+      "random": 0.0,
+      "extra_clicks_think 5": 0.0
+    },
+    "5 clicks away": {
+      "n": 60,
+      "think 1": 0.35,
+      "think 2": 0.6333333333333333,
+      "think 3": 0.7166666666666667,
+      "think 4": 0.6666666666666666,
+      "think 5": 0.7166666666666667,
+      "random": 0.0,
+      "extra_clicks_think 5": 0.09302325581395349
+    },
+    "needs Reset first": {
+      "n": 120,
+      "think 1": 0.675,
+      "think 2": 0.925,
+      "think 3": 0.9666666666666667,
+      "think 4": 0.975,
+      "think 5": 0.975,
+      "random": 0.0,
+      "extra_clicks_think 5": 0.042735042735042736
+    },
+    "no Reset needed": {
+      "n": 120,
+      "think 1": 0.575,
+      "think 2": 0.775,
+      "think 3": 0.7916666666666666,
+      "think 4": 0.7583333333333333,
+      "think 5": 0.7833333333333333,
+      "random": 0.03333333333333333,
+      "extra_clicks_think 5": 0.0
+    }
+  },
+  "decision_ms_median": {
+    "think 1": 33.41215000182274,
+    "think 2": 175.13285000313772,
+    "think 3": 362.5529999990249,
+    "think 4": 546.0707000020193,
+    "think 5": 719.3556999991415
+  },
+  "failures": {
+    "think 1": {
+      "stopped at a wrong board": 0,
+      "ran out of clicks": 90
+    },
+    "think 2": {
+      "stopped at a wrong board": 0,
+      "ran out of clicks": 36
+    },
+    "think 3": {
+      "stopped at a wrong board": 0,
+      "ran out of clicks": 29
+    },
+    "think 4": {
+      "stopped at a wrong board": 0,
+      "ran out of clicks": 32
+    },
+    "think 5": {
+      "stopped at a wrong board": 0,
+      "ran out of clicks": 29
+    }
+  }
+}

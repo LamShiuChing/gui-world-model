@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  /* 224x224 file manager. Deterministic: picture depends only on the state. Square corners only (no AA noise). */
+  * { box-sizing: border-box; transition: none !important; animation: none !important; }
+  body { margin: 0; width: 224px; height: 224px; background: #eef0f3; font-family: Arial, sans-serif; font-size: 11px; color: #222; overflow: hidden; user-select: none; }
+  #title { position: absolute; left: 0; top: 0; width: 224px; height: 20px; line-height: 20px; padding-left: 6px; background: #3b4a5e; color: #fff; font-weight: bold; }
+  .folder { position: absolute; left: 2px; width: 68px; height: 30px; line-height: 30px; padding-left: 6px; border: 1px solid #c4c9d1; background: #fff; }
+  .folder.cur { background: #cfe0fa; border-color: #3a77d8; font-weight: bold; }
+  #pane { position: absolute; left: 74px; top: 24px; width: 148px; height: 196px; background: #fff; border: 1px solid #c4c9d1; }
+  .tile { position: absolute; width: 66px; height: 70px; text-align: center; }
+  .icon { width: 32px; height: 36px; margin: 6px auto 4px; color: #fff; font-weight: bold; line-height: 36px; font-size: 10px; }
+  .txt { background: #5d7fb9; } .jpg { background: #3f9d5c; } .mp3 { background: #c4782f; }
+  #empty { position: absolute; left: 0; top: 80px; width: 146px; text-align: center; color: #999; }
+  #preview { position: absolute; left: 74px; top: 24px; width: 148px; height: 196px; background: #fdfbe9; border: 2px solid #3b4a5e; display: none; }
+  #pname { position: absolute; left: 0; top: 18px; width: 144px; text-align: center; font-size: 14px; font-weight: bold; }
+  #pbody { position: absolute; left: 10px; top: 52px; width: 124px; height: 90px; border: 1px dashed #aaa; }
+  #close { position: absolute; left: 44px; top: 156px; width: 56px; height: 22px; line-height: 20px; text-align: center; border: 1px solid #3b4a5e; background: #fff; }
+</style>
+</head>
+<body>
+<div id="title"></div>
+<div class="folder" style="top:24px">Documents</div>
+<div class="folder" style="top:58px">Photos</div>
+<div class="folder" style="top:92px">Archive</div>
+<div class="folder" style="top:126px">Trash</div>
+<div id="pane"></div>
+<div id="preview"><div id="pname"></div><div id="pbody"></div><div id="close">Close</div></div>
+<script>
+  const FOLDERS = ['Documents', 'Photos', 'Archive', 'Trash'];
+  const FILES = ['notes.txt', 'photo.jpg', 'report.txt', 'song.mp3'];   // sorted by name
+  const DEFAULT = { loc: [0, 1, 0, 0], cur: 0, preview: -1 };           // folder index of each file
+  let s = JSON.parse(JSON.stringify(DEFAULT)), drag = -1;
+  const folders = [...document.querySelectorAll('.folder')], $ = id => document.getElementById(id);
+  const SLOTS = [[4, 6], [76, 6], [4, 90], [76, 90]];
+  function render() {
+    $('title').textContent = 'Files — ' + FOLDERS[s.cur];
+    folders.forEach((e, i) => e.classList.toggle('cur', i === s.cur));
+    const here = FILES.map((f, i) => i).filter(i => s.loc[i] === s.cur);
+    $('pane').innerHTML = here.map((i, k) => {
+      const ext = FILES[i].split('.')[1];
+      return `<div class="tile" data-f="${i}" style="left:${SLOTS[k][0]}px;top:${SLOTS[k][1]}px">` +
+             `<div class="icon ${ext}" data-f="${i}">${ext.toUpperCase()}</div><div data-f="${i}">${FILES[i]}</div></div>`;
+    }).join('') + (here.length ? '' : '<div id="empty">(empty)</div>');
+    $('preview').style.display = s.preview >= 0 ? 'block' : 'none';
+    $('pname').textContent = s.preview >= 0 ? FILES[s.preview] : '';
+    window.__state = JSON.parse(JSON.stringify(s));
+  }
+  const fileAt = e => { const f = e.target.dataset && e.target.dataset.f; return f === undefined ? -1 : +f; };
+  document.addEventListener('mousedown', e => {
+    if (s.preview >= 0) { if (e.target.id === 'close') { s.preview = -1; render(); } return; }  // modal preview
+    const fi = folders.indexOf(e.target);
+    if (fi >= 0) { s.cur = fi; render(); return; }
+    drag = fileAt(e);                                                    // start dragging a file tile
+  });
+  document.addEventListener('mouseup', e => {
+    if (drag >= 0) {
+      const fi = folders.indexOf(e.target);
+      if (fi >= 0 && fi !== s.loc[drag]) { s.loc[drag] = fi; render(); }  // dropped on another folder: move
+    }
+    drag = -1;
+  });
+  document.addEventListener('dblclick', e => {
+    if (s.preview >= 0) return;
+    const f = fileAt(e);
+    if (f >= 0) { s.preview = f; render(); }                             // double-click a file: preview
+  });
+  window.__set = st => { s = JSON.parse(JSON.stringify(st)); drag = -1; render(); };
+  render();
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+check: python rules match the real page on 20,000 recorded clicks (border +-1px skipped)
+smallest real change 0.2739 -> same-screen threshold 0.0822
+   0/400  greedy 100.0%  lookahead 100.0%
+  50/400  greedy 100.0%  lookahead 100.0%
+ 100/400  greedy 86.1%  lookahead 93.1%
+ 150/400  greedy 88.7%  lookahead 95.4%
+ 200/400  greedy 82.1%  lookahead 93.5%
+ 250/400  greedy 79.7%  lookahead 94.0%
+ 300/400  greedy 76.1%  lookahead 90.4%
+ 350/400  greedy 70.9%  lookahead 89.7%
+
+=== Level 2: reach a goal screen 2-5 clicks away (held-out start boards), agent decides when it is done ===
+goal                          n  greedy  lookahead  random*   extra clicks (lookahead, successes)
+all                         400   67.0%      86.2%     0.5%   0.03
+2 clicks away               100   87.0%      93.0%     1.0%   0.00
+3 clicks away               100   77.0%      94.0%     0.0%   0.00
+4 clicks away               100   64.0%      84.0%     1.0%   0.01
+5 clicks away               100   40.0%      74.0%     0.0%   0.15
+needs Reset first           200   76.0%      96.5%     0.0%   0.06
+no Reset needed             200   58.0%      76.0%     1.0%   0.00
+* random = clicks at random for the same budget; counted as success if it EVER passes through the goal (generous)
+saved D:\Latent Action-conditioned Prediction of Interface States\results\level2_examples.png  (row: goal | each screen + click taken | final screen, green = reached, red = failed)

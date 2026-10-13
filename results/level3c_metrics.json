@@ -1,0 +1,23 @@
+{
+  "random": {
+    "food_per_game": 0.2,
+    "food_per_100_steps": 2.2222222222222223,
+    "died": 1.0,
+    "steps_survived": 9.0,
+    "decision_ms_median": null
+  },
+  "imagine 1 step": {
+    "food_per_game": 3.45,
+    "food_per_100_steps": 7.949308755760368,
+    "died": 0.9,
+    "steps_survived": 43.4,
+    "decision_ms_median": 29.15845000097761
+  },
+  "imagine 3 steps": {
+    "food_per_game": 2.85,
+    "food_per_100_steps": 5.834186284544524,
+    "died": 0.85,
+    "steps_survived": 48.85,
+    "decision_ms_median": 92.65729999606265
+  }
+}

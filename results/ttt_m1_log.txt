@@ -1,0 +1,6 @@
+5478 boards rendered, 65736 clicks recorded
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 2580.97it/s]
+
+M1 board readout (held-out half each time): 5478 / 5478 boards fully right
+M1 outcome readout on finished boards:       958 / 958
+M1: PASS  (needs 5478/5478 and 958/958)

@@ -1,0 +1,8 @@
+/root/project/level0/model.py:37: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+1500 held-out Tetris steps | model error / nothing-changes: all 0.533, piece moved 0.468
+codec          bytes/token  pred err vs fp16  (piece moved)  target err / model err  gate
+int8                   384           +0.12%         +0.07%                  0.16%   PASS
+PCA-256 int8           256           +4.98%         +4.41%                  7.67%   FAIL
+PCA-192 int8           192          +12.73%        +11.42%                 18.00%   FAIL
+PCA-128 int8           128          +29.93%        +27.12%                 39.29%   FAIL

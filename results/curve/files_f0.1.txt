@@ -1,0 +1,23 @@
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 7064.05it/s]
+1885 states = 80 distinct screens (21 held out) | train 2592 | test 9866 actions
+/root/project/level0/model.py:37: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+changed-patch fraction rho=0.131 -> change weight 6.6
+step     0  loss 3.2049
+step  1000  loss 0.2999
+step  2000  loss 0.1682
+step  3000  loss 0.0855
+step  4000  loss 0.0707
+step  5000  loss 0.0595
+step  5999  loss 0.0584
+
+=== files app on held-out screens: imagined screen = correct next screen? ===
+action effect                  n   model  wrong action  nothing changes
+close preview                801   28.2%          2.1%             0.0%
+move file (drag)             447   85.2%          5.1%             0.0%
+open folder                 1357   20.6%          2.5%             0.0%
+open preview (dbl-click)     323   77.1%          3.7%             0.0%
+nothing happens             3072   94.3%         68.1%           100.0%
+ALL changes                 2928   38.8%          2.9%
+
+KILL TEST: FAIL  (needs >= 90% correct next state on changes and +30 pts over a wrong action)

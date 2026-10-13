@@ -1,0 +1,90 @@
+{
+  "pretrain_steps": 8000,
+  "tetris_steps": 5000,
+  "runs": [
+    {
+      "falls (gravity / soft drop)": 0.5340837503066772,
+      "move sideways": 0.5513029669190156,
+      "rotate": 0.6041020575167119,
+      "lock + new piece": 0.7237737217141983,
+      "line clear": 0.6848399342386549,
+      "hold": 0.7930188607417876,
+      "moves+rotations+falls": 0.5678918257347403,
+      "changed_cells": 0.6049536968984272,
+      "condition": "scratch",
+      "fraction": 0.05,
+      "tetris_games": 7,
+      "tetris_transitions": 3533
+    },
+    {
+      "falls (gravity / soft drop)": 0.5134113128394917,
+      "move sideways": 0.5374478960847875,
+      "rotate": 0.5951533452306955,
+      "lock + new piece": 0.7366568805849202,
+      "line clear": 0.6515079935439603,
+      "hold": 0.7697040829152073,
+      "moves+rotations+falls": 0.5549973751142199,
+      "changed_cells": 0.6002498897545201,
+      "condition": "pretrained",
+      "fraction": 0.05,
+      "tetris_games": 7,
+      "tetris_transitions": 3533
+    },
+    {
+      "falls (gravity / soft drop)": 0.519650523810426,
+      "move sideways": 0.5284269053752509,
+      "rotate": 0.5586076919751051,
+      "lock + new piece": 0.697976148927431,
+      "line clear": 0.6552931111728727,
+      "hold": 0.7471199415377344,
+      "moves+rotations+falls": 0.5380280907935858,
+      "changed_cells": 0.6507423195648978,
+      "condition": "scratch",
+      "fraction": 0.2,
+      "tetris_games": 29,
+      "tetris_transitions": 9914
+    },
+    {
+      "falls (gravity / soft drop)": 0.4928730732340243,
+      "move sideways": 0.5230608770589883,
+      "rotate": 0.5503319310423642,
+      "lock + new piece": 0.6608989740895502,
+      "line clear": 0.6274615014458056,
+      "hold": 0.750147877811451,
+      "moves+rotations+falls": 0.5292582141448711,
+      "changed_cells": 0.6485374099661914,
+      "condition": "pretrained",
+      "fraction": 0.2,
+      "tetris_games": 29,
+      "tetris_transitions": 9914
+    },
+    {
+      "falls (gravity / soft drop)": 0.4852136472103636,
+      "move sideways": 0.49911468433563616,
+      "rotate": 0.5556421786523238,
+      "lock + new piece": 0.7148746099955593,
+      "line clear": 0.5785357536263417,
+      "hold": 0.7526917673250382,
+      "moves+rotations+falls": 0.5173798006550219,
+      "changed_cells": 0.6662501837424666,
+      "condition": "scratch",
+      "fraction": 1.0,
+      "tetris_games": 146,
+      "tetris_transitions": 61757
+    },
+    {
+      "falls (gravity / soft drop)": 0.46916922100414654,
+      "move sideways": 0.4864929365573583,
+      "rotate": 0.5417030687291462,
+      "lock + new piece": 0.6937490126715987,
+      "line clear": 0.5527888359745589,
+      "hold": 0.7493388231276976,
+      "moves+rotations+falls": 0.5039152301975928,
+      "changed_cells": 0.6670586505953255,
+      "condition": "pretrained",
+      "fraction": 1.0,
+      "tetris_games": 146,
+      "tetris_transitions": 61757
+    }
+  ]
+}

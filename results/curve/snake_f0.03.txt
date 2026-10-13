@@ -1,0 +1,35 @@
+/root/project/level0/model.py:37: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+40000 transitions, 452 games | train 980 | test 7325 (held-out games)
+changed-patch fraction rho=0.069 -> change weight 13.6
+step     0  latent 1.0642  mask 0.9201
+step   500  latent 0.2528  mask 0.0288
+step  1000  latent 0.1394  mask 0.0008
+step  1500  latent 0.1142  mask 0.0005
+step  2000  latent 0.1013  mask 0.0004
+step  2500  latent 0.0857  mask 0.0001
+step  3000  latent 0.0816  mask 0.0001
+step  3500  latent 0.0723  mask 0.0001
+step  4000  latent 0.0680  mask 0.0000
+step  4500  latent 0.0649  mask 0.0000
+step  5000  latent 0.0632  mask 0.0000
+step  5500  latent 0.0601  mask 0.0000
+step  5999  latent 0.0611  mask 0.0000
+
+=== Level 3a (Snake) on held-out games: latent error vs 'nothing changes' (1.00), lower = better ===
+step type                            n   model  wrong key  change-map F1
+no key: time passes               1558   0.480      0.665          0.852
+turn                              2969   0.449      0.882          0.857
+key, no turn                      2033   0.439      0.668          0.863
+eat (food reappears at random)     502   1.092      1.208          0.682
+death                               88   1.130      1.178          0.401
+restart (random new game)           88   0.317      0.936          0.890
+game over, idle                     87       -          -              -   (predicts 'no change' 21.8%)
+
+When the snake EATS (n=502): error vs 'nothing changes'
+  snake + score patches (predictable) : 0.474
+  new-food patches (random)           : 0.960
+  change probability it gives the real new-food spot: 0.030  vs other unchanged board spots: 0.021
+
+KILL TEST: FAIL  (needs error < 0.5 on 'time passes' and 'turn', and wrong key >= 2x worse on turns)
+saved /root/project/results/level3a_examples.png  (cols: before + key | true after | true change map | predicted change map, scaled)

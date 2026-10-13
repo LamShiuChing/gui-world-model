@@ -1,0 +1,15 @@
+   0/200  think 1 100%  think 2 100%  think 3 100%
+  50/200  think 1 98%  think 2 98%  think 3 98%
+ 100/200  think 1 90%  think 2 91%  think 3 91%
+ 150/200  think 1 79%  think 2 80%  think 3 81%
+
+=== A1 Settings: reach a goal settings screen by imagination (start states never seen in training) ===
+goal                n   think 1   think 2   think 3    random
+all               200     65.0%     67.0%     68.0%      7.5%
+1 actions away     50    100.0%    100.0%    100.0%     28.0%
+2 actions away     50     80.0%     82.0%     82.0%      2.0%
+3 actions away     50     58.0%     60.0%     62.0%      0.0%
+4 actions away     50     22.0%     26.0%     28.0%      0.0%
+decision ms (median): think 1 25  think 2 203  think 3 380
+
+KILL TEST: FAIL  (needs >= 80% goals reached and +50 pts over random)

@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  /* 224x224 page; time only moves when step() is called (one tick), so collection is exact */
+  * { box-sizing: border-box; transition: none !important; animation: none !important; }
+  body { margin: 0; width: 224px; height: 224px; background: #fff; font-family: Arial, sans-serif; overflow: hidden; }
+  #status { position: absolute; top: 0; left: 0; width: 224px; height: 22px; line-height: 22px; text-align: center; font-size: 14px; font-weight: bold; }
+  canvas { position: absolute; top: 26px; left: 16px; }
+</style>
+</head>
+<body>
+<div id="status"></div>
+<canvas id="c" width="192" height="192"></canvas>
+<script>
+  const N = 8, C = 24;                                   // 8x8 cells of 24px
+  const DIR = { U: [0, -1], D: [0, 1], L: [-1, 0], R: [1, 0] }, OPP = { U: 'D', D: 'U', L: 'R', R: 'L' };
+  const KEY = { ArrowUp: 'U', ArrowDown: 'D', ArrowLeft: 'L', ArrowRight: 'R' };
+  const ctx = document.getElementById('c').getContext('2d');
+  let s;
+  function newFood() {                                   // the random part: any free cell
+    const free = [];
+    for (let y = 0; y < N; y++) for (let x = 0; x < N; x++)
+      if (!s.snake.some(p => p[0] === x && p[1] === y)) free.push([x, y]);
+    return free.length ? free[Math.floor(Math.random() * free.length)] : null;
+  }
+  function reset() { s = { snake: [[3, 4], [2, 4], [1, 4]], dir: 'R', next: 'R', food: null, score: 0, dead: false }; s.food = newFood(); render(); }
+  document.addEventListener('keydown', e => {
+    const k = KEY[e.key];
+    if (k && !s.dead && k !== OPP[s.dir]) s.next = k;   // reversing into yourself is ignored
+    if (e.key === 'Enter' && s.dead) reset();
+  });
+  function step() {                                      // one tick of the clock
+    if (s.dead) return;
+    s.dir = s.next;
+    const h = [s.snake[0][0] + DIR[s.dir][0], s.snake[0][1] + DIR[s.dir][1]];
+    const eat = s.food && h[0] === s.food[0] && h[1] === s.food[1];
+    const body = eat ? s.snake : s.snake.slice(0, -1);
+    if (h[0] < 0 || h[1] < 0 || h[0] >= N || h[1] >= N || body.some(p => p[0] === h[0] && p[1] === h[1])) { s.dead = true; render(); return; }
+    s.snake = [h, ...body];
+    if (eat) { s.score++; s.food = newFood(); }
+    render();
+  }
+  function render() {
+    document.getElementById('status').textContent = s.dead ? `Game over: ${s.score}. Enter` : `Score: ${s.score}`;
+    ctx.fillStyle = '#f4f4f4'; ctx.fillRect(0, 0, 192, 192);
+    ctx.strokeStyle = '#ddd'; ctx.lineWidth = 1;
+    for (let i = 0; i <= N; i++) { ctx.beginPath(); ctx.moveTo(i * C + 0.5, 0); ctx.lineTo(i * C + 0.5, 192); ctx.moveTo(0, i * C + 0.5); ctx.lineTo(192, i * C + 0.5); ctx.stroke(); }
+    if (s.food) { ctx.fillStyle = '#d02020'; ctx.fillRect(s.food[0] * C + 4, s.food[1] * C + 4, C - 8, C - 8); }
+    s.snake.forEach((p, i) => { ctx.fillStyle = i === 0 ? (s.dead ? '#555' : '#0a6a1a') : '#3cb043'; ctx.fillRect(p[0] * C + 1, p[1] * C + 1, C - 2, C - 2); });
+    window.__state = JSON.parse(JSON.stringify(s));
+  }
+  reset();
+</script>
+</body>
+</html>

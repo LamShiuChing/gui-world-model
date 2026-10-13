@@ -1,0 +1,11 @@
+80008 frames from 194 games, 336px -> 576 tokens, change threshold 8
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 8656.61it/s]
+0/80008
+10240/80008
+20480/80008
+30720/80008
+40960/80008
+51200/80008
+61440/80008
+71680/80008
+done: feats (80008, 576, 384) | changed-patch fraction on transitions 0.0648 | transitions 79814

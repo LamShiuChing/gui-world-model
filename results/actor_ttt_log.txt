@@ -1,0 +1,18 @@
+step     0  loss 5.5831
+step  1000  loss 3.0813
+step  2000  loss 2.8203
+step  3000  loss 1.9930
+step  4000  loss 0.8876
+step  5000  loss 0.7754
+step  5999  loss 0.6687
+D:\Latent Action-conditioned Prediction of Interface States\level0\model.py:37: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+
+=== tic-tac-toe: reach a goal board 2-5 clicks away (held-out starts), offline on cached screens ===
+goal                          actor   actor top8 + judge       judge, all 256
+all                           70.0%                95.5%                79.2%
+2 clicks away                 73.0%                93.0%                86.0%
+3 clicks away                 71.0%                92.0%                84.0%
+4 clicks away                 66.0%                99.0%                69.0%
+5 clicks away                 70.0%                98.0%                78.0%
+decision ms (median): actor 2.6  actor top8 + judge 8.1  judge, all 256 35.4 | off-data boards 30

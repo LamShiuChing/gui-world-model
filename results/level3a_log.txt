@@ -1,0 +1,23 @@
+done: 40000 steps, 2664 food eaten, 451 deaths, 2.3% frames on game-over screen
+feats (40001, 256, 384) | changed-patch fraction 0.0693
+40000 transitions, 452 games | train 32675 | test 7325 (held-out games)
+changed-patch fraction rho=0.069 -> change weight 13.4
+
+=== Level 3a (Snake) on held-out games: latent error vs 'nothing changes' (1.00), lower = better ===
+no key: time passes               1558   0.239      0.630          0.973
+turn                              2969   0.233      1.171          0.979
+key, no turn                      2033   0.227      0.599          0.977
+eat (food reappears at random)     502   1.335      1.449          0.839
+death                               88   0.399      0.597          0.916
+restart (random new game)           88   0.268      0.946          0.974
+game over, idle                     87       -          -              -   (predicts 'no change' 98.9%)
+
+When the snake EATS (n=502): error vs 'nothing changes'
+  snake + score patches (predictable) : 0.233
+  new-food patches (random)           : 0.796
+  change probability it gives the real new-food spot: 0.041  vs other unchanged board spots: 0.018
+
+KILL TEST: PASS  (needs error < 0.5 on 'time passes' and 'turn', and wrong key >= 2x worse on turns)
+saved D:\Latent Action-conditioned Prediction of Interface States\results\level3a_examples.png  (cols: before + key | true after | true change map | predicted change map, scaled)
+
+[exited with code 0]

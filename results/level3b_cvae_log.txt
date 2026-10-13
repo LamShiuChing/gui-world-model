@@ -1,0 +1,35 @@
+/root/project/level0/model.py:37: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+started from 3a IMAGINER; new parts: ['code', 'head', 'prior']
+surprising steps: 3268; of them 'eat': 66% (vs 6.6% of all steps)
+step     0  base 0.1859  best-future 0.1859  futures used in batch 38
+step  1000  base 0.2439  best-future 0.2402  futures used in batch 40
+step  2000  base 0.1892  best-future 0.1819  futures used in batch 41
+step  3000  base 0.1521  best-future 0.1442  futures used in batch 44
+step  4000  base 0.1171  best-future 0.1093  futures used in batch 44
+step  5000  base 0.1071  best-future 0.0983  futures used in batch 38
+step  6000  base 0.0990  best-future 0.0913  futures used in batch 38
+step  7000  base 0.0976  best-future 0.0897  futures used in batch 46
+step  7999  base 0.1081  best-future 0.1009  futures used in batch 39
+/root/project/level0/model.py:37: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+food reader on REAL held-out screens: 100.0% correct cell
+
+=== Level 3b (Snake) on held-out games: latent error vs 'nothing changes' (1.00), lower = better ===
+step type                            n  3a single  3b likeliest  3b best of 64
+no key: time passes               1558      0.239         0.248          0.247
+turn                              2969      0.233         0.242          0.241
+key, no turn                      2033      0.227         0.238          0.238
+eat (food reappears at random)     502      1.335         0.880          0.878
+death                               88      0.399         0.269          0.268
+restart (random new game)           88      0.268         0.181          0.181
+
+Where does the NEW FOOD appear? (n=502 eat steps; reader applied to imagined screens)
+                                      3a single  3b 64 futures
+P(true food cell)  [uniform guess 0.018]      0.017          0.015
+sharpness (one clear food?)               0.597          0.686
+imagined food on an empty cell            87.1%          63.3%
+true cell among the imagined futures       2.0%           1.4%   (64 futures show 1 different food cells on average)
+
+KILL TEST: FAIL  (needs each future sharp >= 0.8, food on empty cell >= 80%, true cell among futures >= 3x single model, no more than 15% worse on 'time passes'/'turn')
+saved /root/project/results/level3b_examples.png  (cols: before + key | true after | 3a: where it thinks food is | 3b: food belief over all futures, boxes = 3 likeliest futures)

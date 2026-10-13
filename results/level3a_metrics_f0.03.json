@@ -1,0 +1,60 @@
+{
+  "n_test": 7325,
+  "groups": {
+    "no key: time passes": {
+      "n": 1558,
+      "model": 0.4796992540359497,
+      "wrong_key": 0.6647612452507019,
+      "mask_F1": 0.8517493605613708,
+      "predicts_no_change": 0.0
+    },
+    "turn": {
+      "n": 2969,
+      "model": 0.44892656803131104,
+      "wrong_key": 0.8818305730819702,
+      "mask_F1": 0.8571428656578064,
+      "predicts_no_change": 0.0
+    },
+    "key, no turn": {
+      "n": 2033,
+      "model": 0.4388692378997803,
+      "wrong_key": 0.6681315898895264,
+      "mask_F1": 0.862674355506897,
+      "predicts_no_change": 0.0
+    },
+    "eat (food reappears at random)": {
+      "n": 502,
+      "model": 1.0921931266784668,
+      "wrong_key": 1.2082171440124512,
+      "mask_F1": 0.6824464797973633,
+      "predicts_no_change": 0.0
+    },
+    "death": {
+      "n": 88,
+      "model": 1.1295405626296997,
+      "wrong_key": 1.177552580833435,
+      "mask_F1": 0.4008275270462036,
+      "predicts_no_change": 0.0
+    },
+    "restart (random new game)": {
+      "n": 88,
+      "model": 0.317304402589798,
+      "wrong_key": 0.9356512427330017,
+      "mask_F1": 0.8899356126785278,
+      "predicts_no_change": 0.0
+    },
+    "game over, idle": {
+      "n": 87,
+      "model": null,
+      "wrong_key": null,
+      "mask_F1": null,
+      "predicts_no_change": 0.2183908075094223
+    }
+  },
+  "eat_split": {
+    "new_food_patches": 0.9604713320732117,
+    "snake_and_score_patches": 0.4735579788684845,
+    "mean_change_prob_on_new_food": 0.02980257384479046,
+    "mean_change_prob_on_unchanged_board": 0.021381190046668053
+  }
+}

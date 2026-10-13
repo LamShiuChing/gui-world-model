@@ -1,0 +1,31 @@
+D:\Latent Action-conditioned Prediction of Interface States\level0\model.py:25: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+5095 states (1525 held out) | train 63962 | test 26314 transitions
+trainable params: 3.4M
+changed-patch fraction rho=0.044 -> change weight 21.6
+step     0  latent 1.8798  mask 0.2534
+step   500  latent 0.2064  mask 0.0022
+step  1000  latent 0.1070  mask 0.0007
+step  1500  latent 0.1121  mask 0.0013
+step  2000  latent 0.1012  mask 0.0044
+step  2500  latent 0.0886  mask 0.0006
+step  3000  latent 0.0756  mask 0.0002
+step  3500  latent 0.0727  mask 0.0003
+step  4000  latent 0.0676  mask 0.0001
+step  4500  latent 0.0538  mask 0.0010
+step  5000  latent 0.0571  mask 0.0001
+step  5500  latent 0.0579  mask 0.0001
+step  5999  latent 0.0541  mask 0.0001
+
+=== Level 0a results on held-out boards (never seen in training) ===
+latent error, changed transitions (nothing-changes baseline = 1.00): model 0.105 | shuffled click 1.124
+change-map F1 on changed transitions: 0.999
+board accuracy      n   model  shuffled  nothing-changes
+all              6000   99.7%     40.6%            53.9%
+no-op            3232   99.9%     67.5%           100.0%
+changed          2768   99.3%      9.2%             0.0%
+winning move      119   89.9%      9.2%             0.0%
+reset             585  100.0%      8.0%             0.0%
+
+KILL TEST: PASS  (needs latent error < 0.5 x baseline and +30 pts board accuracy over shuffled click)
+saved D:\Latent Action-conditioned Prediction of Interface States\results\level0a_examples.png  (cols: before+click | true after | model's predicted board | true change map | predicted change map)

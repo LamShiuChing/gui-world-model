@@ -1,0 +1,8 @@
+# generated datasets (images, features, checkpoints) - rebuild with the collect/encode scripts
+data/
+*.npy
+*.npz
+*.pt
+__pycache__/
+.remember/
+data_hf/

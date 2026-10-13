@@ -1,0 +1,38 @@
+{
+  "n_test": 6000,
+  "mask_F1_changed": 0.9922706484794617,
+  "latent_err_vs_nothing_changes": 0.10578551888465881,
+  "latent_err_shuffled_vs_nothing_changes": 1.1243525743484497,
+  "board_acc": {
+    "all": {
+      "n": 6000,
+      "model": 0.98416668176651,
+      "shuffled": 0.4038333296775818,
+      "nothing_changes": 0.5386666655540466
+    },
+    "no-op": {
+      "n": 3232,
+      "model": 0.9866955280303955,
+      "shuffled": 0.6701732277870178,
+      "nothing_changes": 1.0
+    },
+    "changed": {
+      "n": 2768,
+      "model": 0.9812138676643372,
+      "shuffled": 0.0928468182682991,
+      "nothing_changes": 0.0
+    },
+    "winning move": {
+      "n": 119,
+      "model": 0.8991597294807434,
+      "shuffled": 0.09243697673082352,
+      "nothing_changes": 0.0
+    },
+    "reset": {
+      "n": 585,
+      "model": 0.9982905983924866,
+      "shuffled": 0.08205128461122513,
+      "nothing_changes": 0.0
+    }
+  }
+}

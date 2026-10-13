@@ -1,0 +1,36 @@
+{
+  "n": 1000,
+  "decision_ms_median": 28.25805000065884,
+  "success": {
+    "all": {
+      "n": 1000,
+      "model": 0.998,
+      "random": 0.062,
+      "pixel diff": 0.646
+    },
+    "place mark": {
+      "n": 510,
+      "model": 1.0,
+      "random": 0.09215686274509804,
+      "pixel diff": 1.0
+    },
+    "winning move": {
+      "n": 136,
+      "model": 0.9852941176470589,
+      "random": 0.08823529411764706,
+      "pixel diff": 1.0
+    },
+    "reset": {
+      "n": 354,
+      "model": 1.0,
+      "random": 0.00847457627118644,
+      "pixel diff": 0.0
+    },
+    "goal screen never trained on": {
+      "n": 227,
+      "model": 0.9911894273127754,
+      "random": 0.07488986784140969,
+      "pixel diff": 1.0
+    }
+  }
+}

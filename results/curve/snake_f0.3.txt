@@ -1,0 +1,35 @@
+/root/project/level0/model.py:37: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+40000 transitions, 452 games | train 9802 | test 7325 (held-out games)
+changed-patch fraction rho=0.069 -> change weight 13.5
+step     0  latent 1.1218  mask 0.9295
+step   500  latent 0.3088  mask 0.0515
+step  1000  latent 0.1868  mask 0.0186
+step  1500  latent 0.1754  mask 0.0135
+step  2000  latent 0.1337  mask 0.0070
+step  2500  latent 0.1138  mask 0.0052
+step  3000  latent 0.0968  mask 0.0012
+step  3500  latent 0.0884  mask 0.0006
+step  4000  latent 0.0905  mask 0.0004
+step  4500  latent 0.0811  mask 0.0002
+step  5000  latent 0.0794  mask 0.0001
+step  5500  latent 0.0751  mask 0.0002
+step  5999  latent 0.0786  mask 0.0001
+
+=== Level 3a (Snake) on held-out games: latent error vs 'nothing changes' (1.00), lower = better ===
+step type                            n   model  wrong key  change-map F1
+no key: time passes               1558   0.255      0.579          0.962
+turn                              2969   0.250      0.944          0.965
+key, no turn                      2033   0.244      0.547          0.964
+eat (food reappears at random)     502   0.939      1.202          0.815
+death                               88   0.600      0.802          0.766
+restart (random new game)           88   0.208      0.948          0.970
+game over, idle                     87       -          -              -   (predicts 'no change' 97.7%)
+
+When the snake EATS (n=502): error vs 'nothing changes'
+  snake + score patches (predictable) : 0.253
+  new-food patches (random)           : 0.954
+  change probability it gives the real new-food spot: 0.025  vs other unchanged board spots: 0.008
+
+KILL TEST: PASS  (needs error < 0.5 on 'time passes' and 'turn', and wrong key >= 2x worse on turns)
+saved /root/project/results/level3a_examples.png  (cols: before + key | true after | true change map | predicted change map, scaled)

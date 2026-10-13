@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .block { fill: #121212; stroke: #fdf6e3; stroke-width: 2; }
+  </style>
+  <rect x="4" y="8" width="8" height="8" class="block"/>
+  <rect x="12" y="8" width="8" height="8" class="block"/>
+  <rect x="20" y="8" width="8" height="8" class="block"/>
+  <rect x="12" y="16" width="8" height="8" class="block"/>
+</svg>

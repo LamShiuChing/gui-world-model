@@ -1,0 +1,12 @@
+round 0: food/game  1.80 (best  5)  survived   71.1  died  90%  decision 24 ms  [3 min]
+  round 1: self-play data 1227 transitions, retrained in 269 s
+round 1: food/game  1.50 (best  5)  survived  142.5  died  75%  decision 22 ms  [9 min]
+  round 2: self-play data 2304 transitions, retrained in 262 s
+round 2: food/game  2.10 (best  7)  survived  245.4  died  55%  decision 22 ms  [16 min]
+  round 3: self-play data 4257 transitions, retrained in 294 s
+round 3: food/game  3.35 (best  9)  survived  186.2  died  70%  decision 22 ms  [24 min]
+  round 4: self-play data 6816 transitions, retrained in 320 s
+round 4: food/game  4.05 (best 12)  survived  173.9  died  75%  decision 22 ms  [31 min]
+  round 5: self-play data 10494 transitions, retrained in 362 s
+round 5: food/game  2.25 (best  6)  survived  205.3  died  65%  decision 22 ms  [40 min]
+saved D:\Latent Action-conditioned Prediction of Interface States\results\level3d_curve.png

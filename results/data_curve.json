@@ -1,0 +1,110 @@
+{
+  "ttt": [
+    {
+      "frac": 0.01,
+      "train_actions": 636,
+      "score": 0.8439306020736694
+    },
+    {
+      "frac": 0.03,
+      "train_actions": 2026,
+      "score": 0.964595377445221
+    },
+    {
+      "frac": 0.1,
+      "train_actions": 6589,
+      "score": 0.9819363951683044
+    },
+    {
+      "frac": 0.3,
+      "train_actions": 19435,
+      "score": 0.9898843765258789
+    },
+    {
+      "frac": 1.0,
+      "train_actions": 63962,
+      "score": 0.9931358098983765
+    }
+  ],
+  "settings": [
+    {
+      "frac": 0.01,
+      "train_actions": 215,
+      "score": 0.4874034821987152
+    },
+    {
+      "frac": 0.03,
+      "train_actions": 588,
+      "score": 0.7610727548599243
+    },
+    {
+      "frac": 0.1,
+      "train_actions": 1935,
+      "score": 0.8080048561096191
+    },
+    {
+      "frac": 0.3,
+      "train_actions": 5856,
+      "score": 0.9110117554664612
+    },
+    {
+      "frac": 1.0,
+      "train_actions": 19446,
+      "score": 0.9349857568740845
+    }
+  ],
+  "files": [
+    {
+      "frac": 0.01,
+      "train_actions": 270,
+      "score": 0.2083333283662796
+    },
+    {
+      "frac": 0.03,
+      "train_actions": 769,
+      "score": 0.29303279519081116
+    },
+    {
+      "frac": 0.1,
+      "train_actions": 2592,
+      "score": 0.38763660192489624
+    },
+    {
+      "frac": 0.3,
+      "train_actions": 8002,
+      "score": 0.3777322471141815
+    },
+    {
+      "frac": 1.0,
+      "train_actions": 26208,
+      "score": 0.3715847134590149
+    }
+  ],
+  "snake": [
+    {
+      "frac": 0.01,
+      "train_actions": 326,
+      "score": 0.6993228793144226
+    },
+    {
+      "frac": 0.03,
+      "train_actions": 980,
+      "score": 0.44892656803131104
+    },
+    {
+      "frac": 0.1,
+      "train_actions": 3267,
+      "score": 0.3149866759777069
+    },
+    {
+      "frac": 0.3,
+      "train_actions": 9802,
+      "score": 0.24956515431404114
+    },
+    {
+      "frac": 1.0,
+      "train_actions": 32675,
+      "score": 0.23277170956134796
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+started from 3a IMAGINER; new parts: ['code', 'head', 'prior']
+step     0  base 0.0939  best-future 0.0939  futures used in batch 1
+step  1000  base 0.1053  best-future 0.1015  futures used in batch 33
+step  2000  base 0.0900  best-future 0.0842  futures used in batch 34
+step  3000  base 0.1081  best-future 0.0968  futures used in batch 40
+step  4000  base 0.0862  best-future 0.0774  futures used in batch 29
+step  5000  base 0.0807  best-future 0.0759  futures used in batch 36
+step  5999  base 0.0743  best-future 0.0694  futures used in batch 35
+food reader on REAL held-out screens: 100.0% correct cell
+
+=== Level 3b (Snake) on held-out games: latent error vs 'nothing changes' (1.00), lower = better ===
+step type                            n  3a single  3b likeliest  3b best of 64
+no key: time passes               1558      0.239         0.216          0.208
+turn                              2969      0.233         0.211          0.202
+key, no turn                      2033      0.227         0.206          0.198
+eat (food reappears at random)     502      1.335         1.194          0.977
+death                               88      0.399         0.348          0.328
+restart (random new game)           88      0.268         0.296          0.217
+
+Where does the NEW FOOD appear? (n=502 eat steps; reader applied to imagined screens)
+                                      3a single  3b 64 futures
+P(true food cell)  [uniform guess 0.018]      0.017          0.017
+sharpness (one clear food?)               0.592          0.639
+imagined food on an empty cell            89.2%          84.5%
+
+KILL TEST: FAIL  (needs P(true cell) >= 2x single model, sharpness >= 0.8, no more than 15% worse on 'time passes'/'turn')
+saved D:\Latent Action-conditioned Prediction of Interface States\results\level3b_examples.png  (cols: before + key | true after | 3a: where it thinks food is | 3b: food belief over all futures, boxes = 3 likeliest futures)

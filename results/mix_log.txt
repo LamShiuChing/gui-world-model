@@ -1,0 +1,61 @@
+pretraining on tic-tac-toe (63962) + Snake (32675) + Paint (30000) transitions
+D:\Latent Action-conditioned Prediction of Interface States\level0\model.py:37: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+  [pretrain] step     0  loss 3.0577  (1 s)
+  [pretrain] step  1000  loss 0.4440  (45 s)
+  [pretrain] step  2000  loss 0.6054  (80 s)
+  [pretrain] step  3000  loss 0.1994  (111 s)
+  [pretrain] step  4000  loss 0.3354  (139 s)
+  [pretrain] step  5000  loss 0.5948  (168 s)
+  [pretrain] step  6000  loss 0.1014  (195 s)
+  [pretrain] step  7000  loss 0.2199  (223 s)
+  [pretrain] step  7999  loss 0.2119  (251 s)
+  [scratch 5%] step     0  loss 2.0161  (0 s)
+  [scratch 5%] step  1000  loss 0.5150  (49 s)
+  [scratch 5%] step  2000  loss 0.3416  (97 s)
+  [scratch 5%] step  3000  loss 0.5389  (145 s)
+  [scratch 5%] step  4000  loss 0.2446  (193 s)
+  [scratch 5%] step  4999  loss 0.2474  (240 s)
+   scratch    5% (  3533 transitions): moves/rotations/falls 0.568  changed cells 60.5%
+  [pretrained 5%] step     0  loss 1.6736  (0 s)
+  [pretrained 5%] step  1000  loss 0.4489  (49 s)
+  [pretrained 5%] step  2000  loss 0.3044  (97 s)
+  [pretrained 5%] step  3000  loss 0.4955  (145 s)
+  [pretrained 5%] step  4000  loss 0.2169  (194 s)
+  [pretrained 5%] step  4999  loss 0.2182  (242 s)
+pretrained    5% (  3533 transitions): moves/rotations/falls 0.555  changed cells 60.0%
+  [scratch 20%] step     0  loss 1.9256  (0 s)
+  [scratch 20%] step  1000  loss 0.5359  (55 s)
+  [scratch 20%] step  2000  loss 0.4904  (102 s)
+  [scratch 20%] step  3000  loss 0.3447  (150 s)
+  [scratch 20%] step  4000  loss 0.3131  (197 s)
+  [scratch 20%] step  4999  loss 0.3360  (245 s)
+   scratch   20% (  9914 transitions): moves/rotations/falls 0.538  changed cells 65.1%
+  [pretrained 20%] step     0  loss 1.5352  (0 s)
+  [pretrained 20%] step  1000  loss 0.4908  (48 s)
+  [pretrained 20%] step  2000  loss 0.4483  (96 s)
+  [pretrained 20%] step  3000  loss 0.3052  (144 s)
+  [pretrained 20%] step  4000  loss 0.2898  (193 s)
+  [pretrained 20%] step  4999  loss 0.3066  (241 s)
+pretrained   20% (  9914 transitions): moves/rotations/falls 0.529  changed cells 64.9%
+  [scratch 100%] step     0  loss 2.0571  (0 s)
+  [scratch 100%] step  1000  loss 0.5157  (73 s)
+  [scratch 100%] step  2000  loss 0.3889  (125 s)
+  [scratch 100%] step  3000  loss 0.4621  (177 s)
+  [scratch 100%] step  4000  loss 0.3816  (228 s)
+  [scratch 100%] step  4999  loss 0.4068  (278 s)
+   scratch  100% ( 61757 transitions): moves/rotations/falls 0.517  changed cells 66.6%
+  [pretrained 100%] step     0  loss 1.7015  (0 s)
+  [pretrained 100%] step  1000  loss 0.4661  (62 s)
+  [pretrained 100%] step  2000  loss 0.3730  (114 s)
+  [pretrained 100%] step  3000  loss 0.4351  (164 s)
+  [pretrained 100%] step  4000  loss 0.3598  (215 s)
+  [pretrained 100%] step  4999  loss 0.3805  (267 s)
+pretrained  100% ( 61757 transitions): moves/rotations/falls 0.504  changed cells 66.7%
+
+=== MIX: Tetris prediction on held-out games (error vs 'nothing changes', lower = better | changed board cells right) ===
+ Tetris data                scratch     pretrained on 3 apps
+          5%      0.568 |   60.5%        0.555 |   60.0%
+         20%      0.538 |   65.1%        0.529 |   64.9%
+        100%      0.517 |   66.6%        0.504 |   66.7%
+saved D:\Latent Action-conditioned Prediction of Interface States\results\mix_curve.png

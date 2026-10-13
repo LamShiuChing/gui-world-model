@@ -1,0 +1,20 @@
+D:\Latent Action-conditioned Prediction of Interface States\level0\model.py:37: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|¢i¢i¢i¢i¢i¢i¢i¢i¢i¢i| 223/223 [00:00<00:00, 9602.98it/s]
+D:\Latent Action-conditioned Prediction of Interface States\level0\model.py:102: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:219.)
+  x = torch.from_numpy(imgs).to(dev).permute(0, 3, 1, 2).float() / 255
+   0/200  think 1 100%  think 2 100%  think 3 100%
+  50/200  think 1 86%  think 2 82%  think 3 82%
+ 100/200  think 1 73%  think 2 71%  think 3 70%
+ 150/200  think 1 51%  think 2 52%  think 3 51%
+
+=== files: reach a goal app screen by imagination (start states never seen in training) ===
+goal                n   think 1   think 2   think 3    random
+all               200     39.0%     40.0%     39.0%      2.0%
+1 actions away     50     88.0%     84.0%     84.0%      6.0%
+2 actions away     50     60.0%     60.0%     58.0%      2.0%
+3 actions away     50      6.0%     14.0%     12.0%      0.0%
+4 actions away     50      2.0%      2.0%      2.0%      0.0%
+decision ms (median): think 1 52  think 2 977  think 3 1936
+
+KILL TEST: FAIL  (needs >= 80% goals reached and +50 pts over random)

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  /* 224x224 page, deterministic: no animation, no hover; drawing only through mouse drags on the canvas */
+  * { box-sizing: border-box; transition: none !important; animation: none !important; }
+  body { margin: 0; width: 224px; height: 224px; background: #e8e8e8; font-family: Arial, sans-serif; overflow: hidden; user-select: none; }
+  .sw { position: absolute; top: 4px; width: 20px; height: 20px; border: 2px solid #888; }
+  .sw.on { border: 2px solid #000; outline: 2px solid #fff; }
+  #clear { position: absolute; top: 4px; left: 150px; width: 66px; height: 20px; line-height: 16px; font-size: 12px; text-align: center; border: 1px solid #555; background: #fafafa; }
+  canvas { position: absolute; top: 30px; left: 8px; background: #fff; border: 1px solid #999; }
+</style>
+</head>
+<body>
+<div class="sw" style="left:8px;background:#111"></div>
+<div class="sw" style="left:42px;background:#d22"></div>
+<div class="sw" style="left:76px;background:#16c"></div>
+<div class="sw" style="left:110px;background:#1a1"></div>
+<div id="clear">Clear</div>
+<canvas id="c" width="208" height="188"></canvas>
+<script>
+  const COLORS = ['#111', '#d22', '#16c', '#1a1'];
+  const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+  const sw = [...document.querySelectorAll('.sw')];
+  let color = 0, down = null;
+  function pick(i) { color = i; sw.forEach((e, j) => e.classList.toggle('on', j === i)); }
+  function clearCanvas() { ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cv.width, cv.height); }
+  sw.forEach((e, i) => e.addEventListener('mousedown', () => pick(i)));
+  document.getElementById('clear').addEventListener('mousedown', clearCanvas);
+  const pos = e => { const r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+  cv.addEventListener('mousedown', e => { down = pos(e); });
+  window.addEventListener('mousemove', e => {  // draw each segment of the drag as it happens
+    if (!down) return;
+    const p = pos(e);
+    ctx.strokeStyle = COLORS[color]; ctx.lineWidth = 6; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(down[0], down[1]); ctx.lineTo(p[0], p[1]); ctx.stroke();
+    down = p;
+  });
+  window.addEventListener('mouseup', () => { down = null; });
+  window.__state = () => ({ color });
+  window.__pixels = () => Array.from(ctx.getImageData(0, 0, cv.width, cv.height).data.filter((_, i) => i % 4 !== 3));
+  pick(0); clearCanvas();
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "n_test": 6000,
+  "groups": {
+    "close preview": {
+      "n": 801,
+      "model": 0.11985018849372864,
+      "wrong_action": 0.012484394945204258,
+      "nothing_changes": 0.0
+    },
+    "move file (drag)": {
+      "n": 447,
+      "model": 0.5234899520874023,
+      "wrong_action": 0.0469798669219017,
+      "nothing_changes": 0.0
+    },
+    "open folder": {
+      "n": 1357,
+      "model": 0.07148120552301407,
+      "wrong_action": 0.0073691969737410545,
+      "nothing_changes": 0.0
+    },
+    "open preview (dbl-click)": {
+      "n": 323,
+      "model": 0.5665634870529175,
+      "wrong_action": 0.02476780116558075,
+      "nothing_changes": 0.0
+    },
+    "nothing happens": {
+      "n": 3072,
+      "model": 0.8401692509651184,
+      "wrong_action": 0.6881510615348816,
+      "nothing_changes": 1.0
+    }
+  },
+  "changed": {
+    "model": 0.2083333283662796,
+    "wrong_action": 0.016734972596168518
+  }
+}

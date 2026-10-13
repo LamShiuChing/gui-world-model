@@ -1,0 +1,45 @@
+{
+  "n": 200,
+  "success": {
+    "all": {
+      "n": 200,
+      "think 1": 0.39,
+      "think 2": 0.4,
+      "think 3": 0.39,
+      "random": 0.02
+    },
+    "1 actions away": {
+      "n": 50,
+      "think 1": 0.88,
+      "think 2": 0.84,
+      "think 3": 0.84,
+      "random": 0.06
+    },
+    "2 actions away": {
+      "n": 50,
+      "think 1": 0.6,
+      "think 2": 0.6,
+      "think 3": 0.58,
+      "random": 0.02
+    },
+    "3 actions away": {
+      "n": 50,
+      "think 1": 0.06,
+      "think 2": 0.14,
+      "think 3": 0.12,
+      "random": 0.0
+    },
+    "4 actions away": {
+      "n": 50,
+      "think 1": 0.02,
+      "think 2": 0.02,
+      "think 3": 0.02,
+      "random": 0.0
+    }
+  },
+  "decision_ms_median": {
+    "1": 51.835200000368786,
+    "2": 977.154100000007,
+    "3": 1936.3524000000325
+  }
+}

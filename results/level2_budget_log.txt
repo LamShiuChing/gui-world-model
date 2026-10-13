@@ -1,0 +1,21 @@
+check: python rules match the real page on 20,000 recorded clicks (border +-1px skipped)
+smallest real change 0.2739 -> same-screen threshold 0.0822
+   0/240  think 1 100.0%  think 2 100.0%  think 3 100.0%  think 4 100.0%  think 5 100.0%
+  50/240  think 1 96.1%  think 2 96.1%  think 3 96.1%  think 4 96.1%  think 5 96.1%
+ 100/240  think 1 86.1%  think 2 93.1%  think 3 94.1%  think 4 94.1%  think 5 94.1%
+ 150/240  think 1 75.5%  think 2 94.7%  think 3 95.4%  think 4 95.4%  think 5 95.4%
+ 200/240  think 1 68.7%  think 2 90.5%  think 3 92.5%  think 4 93.0%  think 5 93.0%
+
+=== Level 2: reach a goal screen 2-5 clicks away (held-out start boards), agent decides when it is done ===
+goal                          n    think 1    think 2    think 3    think 4    think 5     random   extra clicks (think 5, successes)
+all                         240      62.5%      85.0%      87.9%      86.7%      87.9%       1.7%   0.02
+2 clicks away                60      91.7%      93.3%      93.3%      93.3%      93.3%       6.7%   0.00
+3 clicks away                60      73.3%      93.3%      95.0%      95.0%      95.0%       0.0%   0.02
+4 clicks away                60      50.0%      90.0%      91.7%      91.7%      91.7%       0.0%   0.00
+5 clicks away                60      35.0%      63.3%      71.7%      66.7%      71.7%       0.0%   0.09
+needs Reset first           120      67.5%      92.5%      96.7%      97.5%      97.5%       0.0%   0.04
+no Reset needed             120      57.5%      77.5%      79.2%      75.8%      78.3%       3.3%   0.00
+* random = clicks at random for the same budget; counted as success if it EVER passes through the goal (generous)
+decision time per click (median): think 1 33 ms  think 2 175 ms  think 3 363 ms  think 4 546 ms  think 5 719 ms
+why failures happened: think 1: {'stopped at a wrong board': 0, 'ran out of clicks': 90}  |  think 2: {'stopped at a wrong board': 0, 'ran out of clicks': 36}  |  think 3: {'stopped at a wrong board': 0, 'ran out of clicks': 29}  |  think 4: {'stopped at a wrong board': 0, 'ran out of clicks': 32}  |  think 5: {'stopped at a wrong board': 0, 'ran out of clicks': 29}
+saved D:\Latent Action-conditioned Prediction of Interface States\results\level2_budget_examples.png  (row: goal | each screen + click taken | final screen, green = reached, red = failed)

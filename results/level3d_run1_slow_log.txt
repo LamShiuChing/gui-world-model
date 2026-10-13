@@ -1,0 +1,3 @@
+round 0: food/game  1.50 (best  6)  survived   67.9  died  90%  decision 22 ms  [3 min]
+  round 1: self-play data 879 transitions, retrained in 1150 s
+round 1: food/game  2.85 (best  7)  survived  131.7  died  80%  decision 76 ms  [26 min]

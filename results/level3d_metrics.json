@@ -1,0 +1,56 @@
+[
+  {
+    "food_per_game": 1.8,
+    "food_max": 5,
+    "steps_survived": 71.1,
+    "died": 0.9,
+    "decision_ms_median": 23.83815000212053,
+    "round": 0,
+    "selfplay_transitions": 0
+  },
+  {
+    "food_per_game": 1.5,
+    "food_max": 5,
+    "steps_survived": 142.5,
+    "died": 0.75,
+    "decision_ms_median": 22.086499997385545,
+    "round": 1,
+    "selfplay_transitions": 1227
+  },
+  {
+    "food_per_game": 2.1,
+    "food_max": 7,
+    "steps_survived": 245.4,
+    "died": 0.55,
+    "decision_ms_median": 21.88650000243797,
+    "round": 2,
+    "selfplay_transitions": 2304
+  },
+  {
+    "food_per_game": 3.35,
+    "food_max": 9,
+    "steps_survived": 186.15,
+    "died": 0.7,
+    "decision_ms_median": 21.972100003040396,
+    "round": 3,
+    "selfplay_transitions": 4257
+  },
+  {
+    "food_per_game": 4.05,
+    "food_max": 12,
+    "steps_survived": 173.9,
+    "died": 0.75,
+    "decision_ms_median": 21.98300000236486,
+    "round": 4,
+    "selfplay_transitions": 6816
+  },
+  {
+    "food_per_game": 2.25,
+    "food_max": 6,
+    "steps_survived": 205.3,
+    "died": 0.65,
+    "decision_ms_median": 21.789850001368904,
+    "round": 5,
+    "selfplay_transitions": 10494
+  }
+]

@@ -1,0 +1,22 @@
+40000 transitions | train 30000 | test 10000 (held-out worker 3)
+   clear canvas                 1467
+   click, nothing happens       1852
+   colour pick                  5352
+   stroke does nothing           205
+   stroke draws                31124
+changed-patch fraction rho=0.045 -> change weight 21.1
+step     0  loss 3.3580
+step  1000  loss 0.6208
+step  2000  loss 0.4891
+step  3000  loss 0.3950
+step  4000  loss 0.3557
+step  5000  loss 0.3542
+step  6000  loss 0.2960
+step  7000  loss 0.3105
+step  7999  loss 0.3337
+Traceback (most recent call last):
+  File "D:\Latent Action-conditioned Prediction of Interface States\level0\paint_train.py", line 96, in <module>
+    loss = F.cross_entropy(reader(pool(get(b + 1), m)), torch.from_numpy(color[b]).to(dev))
+  File "<python>\lib\site-packages\torch\nn\functional.py", line 3504, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(
+NotImplementedError: "nll_loss_forward_reduce_cuda_kernel_2d_index" not implemented for 'Int'

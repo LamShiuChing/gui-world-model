@@ -1,0 +1,23 @@
+524 states (138 held out) | train 15889 | test 8656 actions
+changed-patch fraction rho=0.180 -> change weight 4.6
+step     0  loss 2.1889
+step  1000  loss 0.1884
+step  2000  loss 0.0900
+step  3000  loss 0.0712
+step  4000  loss 0.0588
+step  5000  loss 0.0566
+step  5999  loss 0.0510
+
+=== A1 Settings on held-out app states: imagined screen = correct next state? ===
+action effect          n   model  wrong action  nothing changes
+dark mode            533   99.4%          9.9%             0.0%
+wi-fi                470   96.6%          9.6%             0.0%
+notifications        495   99.2%         10.1%             0.0%
+volume slider       1705   93.2%          3.4%             0.0%
+open menu            499   53.9%          6.4%             0.0%
+pick from menu       669   71.2%         33.6%             0.0%
+reset                526   99.8%         10.1%             0.0%
+nothing happens     1103   98.2%         24.8%           100.0%
+ALL changes         4897   88.5%         10.5%
+
+KILL TEST: FAIL  (needs >= 90% correct next state on changes and +30 pts over a wrong action)

@@ -1,0 +1,29 @@
+started from 3a IMAGINER; new parts: ['code', 'head', 'prior']
+surprising steps: 3268; of them 'eat': 66% (vs 6.6% of all steps)
+step     0  base 0.1715  best-future 0.1715  futures used in batch 1
+step  1000  base 0.2225  best-future 0.1951  futures used in batch 37
+step  2000  base 0.1640  best-future 0.1444  futures used in batch 35
+step  3000  base 0.1718  best-future 0.1509  futures used in batch 36
+step  4000  base 0.1042  best-future 0.0955  futures used in batch 28
+step  5000  base 0.1147  best-future 0.1052  futures used in batch 33
+step  5999  base 0.1011  best-future 0.0918  futures used in batch 32
+food reader on REAL held-out screens: 100.0% correct cell
+
+=== Level 3b (Snake) on held-out games: latent error vs 'nothing changes' (1.00), lower = better ===
+step type                            n  3a single  3b likeliest  3b best of 64
+no key: time passes               1558      0.239         0.262          0.254
+turn                              2969      0.233         0.257          0.249
+key, no turn                      2033      0.227         0.252          0.245
+eat (food reappears at random)     502      1.335         0.860          0.766
+death                               88      0.399         0.276          0.261
+restart (random new game)           88      0.268         0.198          0.183
+
+Where does the NEW FOOD appear? (n=502 eat steps; reader applied to imagined screens)
+                                      3a single  3b 64 futures
+P(true food cell)  [uniform guess 0.018]      0.017          0.010
+sharpness (one clear food?)               0.593          0.661
+imagined food on an empty cell            89.2%          58.4%
+true cell among the imagined futures       2.4%           3.6%   (64 futures show 3 different food cells on average)
+
+KILL TEST: FAIL  (needs each future sharp >= 0.8, food on empty cell >= 80%, true cell among futures >= 3x single model, no more than 15% worse on 'time passes'/'turn')
+saved D:\Latent Action-conditioned Prediction of Interface States\results\level3b_examples.png  (cols: before + key | true after | 3a: where it thinks food is | 3b: food belief over all futures, boxes = 3 likeliest futures)

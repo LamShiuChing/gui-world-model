@@ -1,0 +1,6 @@
+w0 step      0  0.0 steps/s  episodes 1
+w0 step   2000  11.2 steps/s  episodes 1
+w0 step   4000  10.3 steps/s  episodes 2
+w0 step   6000  10.4 steps/s  episodes 2
+w0 step   8000  10.9 steps/s  episodes 6
+w0 done: 10000 steps, 9 episodes, 388 lines cleared, levels [2, 3, 4]..23

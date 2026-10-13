@@ -1,0 +1,47 @@
+{
+  "10": {
+    "train_apps": 10,
+    "train_actions": 3000,
+    "right_screen_changed": 0.08167938888072968,
+    "right_screen_changed_wrong_click": 0.0396946556866169,
+    "right_screen_noop": 0.958343505859375,
+    "err_vs_nochange_changed": 0.7194432020187378,
+    "err_wrong_click_changed": 0.968178927898407
+  },
+  "30": {
+    "train_apps": 30,
+    "train_actions": 9000,
+    "right_screen_changed": 0.2288379967212677,
+    "right_screen_changed_wrong_click": 0.0555555559694767,
+    "right_screen_noop": 0.9896467924118042,
+    "err_vs_nochange_changed": 0.4699045717716217,
+    "err_wrong_click_changed": 0.9682462215423584
+  },
+  "100": {
+    "train_apps": 100,
+    "train_actions": 30000,
+    "right_screen_changed": 0.37379133701324463,
+    "right_screen_changed_wrong_click": 0.06403732299804688,
+    "right_screen_noop": 0.9922046661376953,
+    "err_vs_nochange_changed": 0.33358874917030334,
+    "err_wrong_click_changed": 0.9867066144943237
+  },
+  "300": {
+    "train_apps": 300,
+    "train_actions": 90000,
+    "right_screen_changed": 0.40627649426460266,
+    "right_screen_changed_wrong_click": 0.06386768817901611,
+    "right_screen_noop": 0.9957368969917297,
+    "err_vs_nochange_changed": 0.28790321946144104,
+    "err_wrong_click_changed": 0.9698095917701721
+  },
+  "1000": {
+    "train_apps": 1000,
+    "train_actions": 300000,
+    "right_screen_changed": 0.4189143478870392,
+    "right_screen_changed_wrong_click": 0.06564885377883911,
+    "right_screen_noop": 0.9970767498016357,
+    "err_vs_nochange_changed": 0.2705744504928589,
+    "err_wrong_click_changed": 0.9528974294662476
+  }
+}

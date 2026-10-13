@@ -1,0 +1,23 @@
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|¢i¢i¢i¢i¢i¢i¢i¢i¢i¢i| 223/223 [00:00<00:00, 5755.03it/s]
+1885 states = 80 distinct screens (21 held out) | train 26208 | test 9866 actions
+D:\Latent Action-conditioned Prediction of Interface States\level0\model.py:37: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+changed-patch fraction rho=0.131 -> change weight 6.6
+step     0  loss 3.3720
+step  1000  loss 0.3720
+step  2000  loss 0.2560
+step  3000  loss 0.3004
+step  4000  loss 0.2807
+step  5000  loss 0.2454
+step  5999  loss 0.2209
+
+=== files app on held-out screens: imagined screen = correct next screen? ===
+action effect                  n   model  wrong action  nothing changes
+close preview                801   29.3%          3.0%             0.0%
+move file (drag)             447   90.2%          4.3%             0.0%
+open folder                 1357   14.6%          1.9%             0.0%
+open preview (dbl-click)     323   78.0%          3.7%             0.0%
+nothing happens             3072   99.6%         69.8%           100.0%
+ALL changes                 2928   37.2%          2.8%
+
+KILL TEST: FAIL  (needs >= 90% correct next state on changes and +30 pts over a wrong action)

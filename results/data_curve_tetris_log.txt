@@ -1,0 +1,7 @@
+--- tetris 1%
+--- tetris 5%
+--- tetris 20%
+
+app       data used: score (training actions)
+tetris          1%: 0.489 (427)       5%: 0.600 (3533)      20%: 0.635 (9914)    100%: 0.714 (61757)   <- changed board cells right
+saved /root/project/results/data_curve.png

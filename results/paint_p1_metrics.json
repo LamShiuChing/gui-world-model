@@ -1,0 +1,39 @@
+{
+  "n_test": 6000,
+  "groups": {
+    "stroke draws": {
+      "n": 4692,
+      "model": 0.4141000211238861,
+      "wrong_stroke": 1.447088599205017,
+      "iou": 0.9079358968189037
+    },
+    "colour pick": {
+      "n": 780,
+      "model": 0.7007416486740112,
+      "wrong_stroke": 17.022558212280273,
+      "iou": 0.9993998319529468
+    },
+    "clear canvas": {
+      "n": 206,
+      "model": 0.044300567358732224,
+      "wrong_stroke": 0.7661912441253662,
+      "iou": 0.9491672370522474
+    },
+    "stroke does nothing": {
+      "n": 26,
+      "model": 49.3814811706543,
+      "wrong_stroke": 16.63739013671875,
+      "iou": 0.010169491525423728
+    },
+    "click, nothing happens": {
+      "n": 296,
+      "model": null,
+      "wrong_stroke": null,
+      "iou": null
+    }
+  },
+  "colour": {
+    "imagined": 0.9729326513213982,
+    "real_next_screen": 0.9650468883205456
+  }
+}

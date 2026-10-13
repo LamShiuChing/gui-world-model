@@ -1,0 +1,9 @@
+step      0  0 steps/s
+step   5000  30 steps/s
+step  10000  30 steps/s
+step  15000  33 steps/s
+step  20000  34 steps/s
+step  25000  33 steps/s
+step  30000  32 steps/s
+step  35000  32 steps/s
+done: 40000 steps, 2664 food eaten, 451 deaths, 2.3% frames on game-over screen

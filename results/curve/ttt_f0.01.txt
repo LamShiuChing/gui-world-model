@@ -1,0 +1,31 @@
+/root/project/level0/model.py:37: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+5095 states (1525 held out) | train 636 | test 26314 transitions | labels: full
+trainable params: 3.4M
+changed-patch fraction rho=0.044 -> change weight 21.7
+step     0  latent 1.9314  mask 0.2709
+step   500  latent 0.1779  mask 0.0008
+step  1000  latent 0.1004  mask 0.0002
+step  1500  latent 0.0643  mask 0.0001
+step  2000  latent 0.0522  mask 0.0001
+step  2500  latent 0.0376  mask 0.0000
+step  3000  latent 0.0345  mask 0.0000
+step  3500  latent 0.0321  mask 0.0000
+step  4000  latent 0.0330  mask 0.0000
+step  4500  latent 0.0264  mask 0.0000
+step  5000  latent 0.0258  mask 0.0000
+step  5500  latent 0.0258  mask 0.0000
+step  5999  latent 0.0263  mask 0.0000
+
+=== Level 0a results on held-out boards (never seen in training) ===
+latent error, changed transitions (nothing-changes baseline = 1.00): model 0.157 | shuffled click 1.122
+change-map F1 on changed transitions: 0.946
+board accuracy      n   model  shuffled  nothing-changes
+all              6000   92.4%     43.0%            53.9%
+no-op            3232   99.2%     73.1%           100.0%
+changed          2768   84.4%      7.9%             0.0%
+winning move      119    9.2%      1.7%             0.0%
+reset             585   99.8%      8.2%             0.0%
+
+KILL TEST: PASS  (needs latent error < 0.5 x baseline and +30 pts board accuracy over shuffled click)
+saved /root/project/results/level0a_examples_f0.01.png  (cols: before+click | true after | model's predicted board | true change map | predicted change map)

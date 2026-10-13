@@ -1,0 +1,81 @@
+{
+  "n": 240,
+  "same_screen_threshold": 0.08217190504074097,
+  "success": {
+    "all": {
+      "n": 240,
+      "mse look3": 0.8791666666666667,
+      "judge 1": 0.825,
+      "judge 3": 0.8541666666666666,
+      "random": 0.016666666666666666,
+      "extra_clicks_judge 3": 0.0
+    },
+    "2 clicks away": {
+      "n": 60,
+      "mse look3": 0.9333333333333333,
+      "judge 1": 0.8666666666666667,
+      "judge 3": 0.95,
+      "random": 0.06666666666666667,
+      "extra_clicks_judge 3": 0.0
+    },
+    "3 clicks away": {
+      "n": 60,
+      "mse look3": 0.95,
+      "judge 1": 0.8333333333333334,
+      "judge 3": 0.8333333333333334,
+      "random": 0.0,
+      "extra_clicks_judge 3": 0.0
+    },
+    "4 clicks away": {
+      "n": 60,
+      "mse look3": 0.9166666666666666,
+      "judge 1": 0.85,
+      "judge 3": 0.8666666666666667,
+      "random": 0.0,
+      "extra_clicks_judge 3": 0.0
+    },
+    "5 clicks away": {
+      "n": 60,
+      "mse look3": 0.7166666666666667,
+      "judge 1": 0.75,
+      "judge 3": 0.7666666666666667,
+      "random": 0.0,
+      "extra_clicks_judge 3": 0.0
+    },
+    "needs Reset first": {
+      "n": 120,
+      "mse look3": 0.9666666666666667,
+      "judge 1": 0.8083333333333333,
+      "judge 3": 0.8583333333333333,
+      "random": 0.0,
+      "extra_clicks_judge 3": 0.0
+    },
+    "no Reset needed": {
+      "n": 120,
+      "mse look3": 0.7916666666666666,
+      "judge 1": 0.8416666666666667,
+      "judge 3": 0.85,
+      "random": 0.03333333333333333,
+      "extra_clicks_judge 3": 0.0
+    }
+  },
+  "decision_ms_median": {
+    "mse look3": 373.10270000034507,
+    "judge 1": 53.05224999983693,
+    "judge 3": 655.1228500002253
+  },
+  "failures": {
+    "mse look3": {
+      "stopped at a wrong board": 0,
+      "ran out of clicks": 29
+    },
+    "judge 1": {
+      "stopped at a wrong board": 0,
+      "ran out of clicks": 42
+    },
+    "judge 3": {
+      "stopped at a wrong board": 0,
+      "ran out of clicks": 35
+    }
+  }
+}

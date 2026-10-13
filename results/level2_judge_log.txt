@@ -1,0 +1,26 @@
+D:\Latent Action-conditioned Prediction of Interface States\level0\model.py:37: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.tf = nn.TransformerEncoder(block, layers)
+check: python rules match the real page on 20,000 recorded clicks (border +-1px skipped)
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|¢i¢i¢i¢i¢i¢i¢i¢i¢i¢i| 223/223 [00:00<00:00, 12443.52it/s]
+D:\Latent Action-conditioned Prediction of Interface States\level0\model.py:109: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:219.)
+  x = torch.from_numpy(imgs).to(dev).permute(0, 3, 1, 2).float() / 255
+smallest real change 0.2739 -> same-screen threshold 0.0822
+   0/240  mse look3 100.0%  judge 1 100.0%  judge 3 100.0%
+  50/240  mse look3 96.1%  judge 1 84.3%  judge 3 94.1%
+ 100/240  mse look3 94.1%  judge 1 85.1%  judge 3 90.1%
+ 150/240  mse look3 95.4%  judge 1 84.1%  judge 3 87.4%
+ 200/240  mse look3 92.5%  judge 1 84.1%  judge 3 87.6%
+
+=== Level 2: reach a goal screen 2-5 clicks away (held-out start boards), agent decides when it is done ===
+goal                          n  mse look3    judge 1    judge 3     random   extra clicks (judge 3, successes)
+all                         240      87.9%      82.5%      85.4%       1.7%   0.00
+2 clicks away                60      93.3%      86.7%      95.0%       6.7%   0.00
+3 clicks away                60      95.0%      83.3%      83.3%       0.0%   0.00
+4 clicks away                60      91.7%      85.0%      86.7%       0.0%   0.00
+5 clicks away                60      71.7%      75.0%      76.7%       0.0%   0.00
+needs Reset first           120      96.7%      80.8%      85.8%       0.0%   0.00
+no Reset needed             120      79.2%      84.2%      85.0%       3.3%   0.00
+* random = clicks at random for the same budget; counted as success if it EVER passes through the goal (generous)
+decision time per click (median): mse look3 373 ms  judge 1 53 ms  judge 3 655 ms
+why failures happened: mse look3: {'stopped at a wrong board': 0, 'ran out of clicks': 29}  |  judge 1: {'stopped at a wrong board': 0, 'ran out of clicks': 42}  |  judge 3: {'stopped at a wrong board': 0, 'ran out of clicks': 35}
+saved D:\Latent Action-conditioned Prediction of Interface States\results\level2_judge_examples.png  (row: goal | each screen + click taken | final screen, green = reached, red = failed)

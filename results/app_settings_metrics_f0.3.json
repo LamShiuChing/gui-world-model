@@ -1,0 +1,57 @@
+{
+  "n_test": 6000,
+  "groups": {
+    "dark mode": {
+      "n": 529,
+      "model": 0.9848771095275879,
+      "wrong_action": 0.10586011409759521,
+      "nothing_changes": 0.0
+    },
+    "notifications": {
+      "n": 496,
+      "model": 0.9959677457809448,
+      "wrong_action": 0.1088709682226181,
+      "nothing_changes": 0.0
+    },
+    "open menu": {
+      "n": 512,
+      "model": 0.974609375,
+      "wrong_action": 0.1171875,
+      "nothing_changes": 0.0
+    },
+    "pick from menu": {
+      "n": 669,
+      "model": 0.6008968353271484,
+      "wrong_action": 0.2496263086795807,
+      "nothing_changes": 0.0
+    },
+    "reset": {
+      "n": 518,
+      "model": 1.0,
+      "wrong_action": 0.10810811072587967,
+      "nothing_changes": 0.0
+    },
+    "volume slider": {
+      "n": 1696,
+      "model": 0.9198113083839417,
+      "wrong_action": 0.03125,
+      "nothing_changes": 0.0
+    },
+    "wi-fi": {
+      "n": 502,
+      "model": 0.9760956168174744,
+      "wrong_action": 0.0936255007982254,
+      "nothing_changes": 0.0
+    },
+    "nothing happens": {
+      "n": 1078,
+      "model": 0.9582560062408447,
+      "wrong_action": 0.25974026322364807,
+      "nothing_changes": 1.0
+    }
+  },
+  "changed": {
+    "model": 0.9110117554664612,
+    "wrong_action": 0.10016253590583801
+  }
+}

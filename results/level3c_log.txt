@@ -1,0 +1,8 @@
+senses trained (last loss 4.251)
+random           food/game  0.20  food/100 steps  2.22  died  100%  survived    9.0 steps
+  x = torch.from_numpy(imgs).to(dev).permute(0, 3, 1, 2).float() / 255
+imagine 1 step   food/game  3.45  food/100 steps  7.95  died   90%  survived   43.4 steps  decision 29 ms
+imagine 3 steps  food/game  2.85  food/100 steps  5.83  died   85%  survived   48.9 steps  decision 93 ms
+(reference: the data bot, which reads the true game state, ate 6.7 food / 100 steps)
+
+KILL TEST: PASS  (needs imagine-3 to eat >= 3x random's food per game and die no more often)

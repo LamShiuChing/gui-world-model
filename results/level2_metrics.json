@@ -1,0 +1,55 @@
+{
+  "n": 400,
+  "same_screen_threshold": 0.08217190504074097,
+  "success": {
+    "all": {
+      "n": 400,
+      "greedy": 0.67,
+      "lookahead": 0.8625,
+      "random": 0.005,
+      "lookahead_extra_clicks": 0.034782608695652174
+    },
+    "2 clicks away": {
+      "n": 100,
+      "greedy": 0.87,
+      "lookahead": 0.93,
+      "random": 0.01,
+      "lookahead_extra_clicks": 0.0
+    },
+    "3 clicks away": {
+      "n": 100,
+      "greedy": 0.77,
+      "lookahead": 0.94,
+      "random": 0.0,
+      "lookahead_extra_clicks": 0.0
+    },
+    "4 clicks away": {
+      "n": 100,
+      "greedy": 0.64,
+      "lookahead": 0.84,
+      "random": 0.01,
+      "lookahead_extra_clicks": 0.011904761904761904
+    },
+    "5 clicks away": {
+      "n": 100,
+      "greedy": 0.4,
+      "lookahead": 0.74,
+      "random": 0.0,
+      "lookahead_extra_clicks": 0.14864864864864866
+    },
+    "needs Reset first": {
+      "n": 200,
+      "greedy": 0.76,
+      "lookahead": 0.965,
+      "random": 0.0,
+      "lookahead_extra_clicks": 0.06217616580310881
+    },
+    "no Reset needed": {
+      "n": 200,
+      "greedy": 0.58,
+      "lookahead": 0.76,
+      "random": 0.01,
+      "lookahead_extra_clicks": 0.0
+    }
+  }
+}

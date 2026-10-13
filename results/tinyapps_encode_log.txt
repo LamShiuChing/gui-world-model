@@ -1,0 +1,15 @@
+1100 apps, 69892 screens to render
+worker 7: app 7 attempt 1 failed: Page.screenshot: Protocol error (Page.captureScreenshot): Unable to capture scre
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 8098.02it/s]
+100/1100 apps encoded
+200/1100 apps encoded
+300/1100 apps encoded
+400/1100 apps encoded
+500/1100 apps encoded
+600/1100 apps encoded
+700/1100 apps encoded
+800/1100 apps encoded
+900/1100 apps encoded
+1000/1100 apps encoded
+1100/1100 apps encoded
+done: 69892 screens (38131 distinct images), 330000 actions, features 6.87 GB int8

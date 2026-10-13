@@ -1,0 +1,6 @@
+40004 frames from 4 games, 224px -> 256 tokens, change threshold 0
+0/40004
+10240/40004
+20480/40004
+30720/40004
+done: feats (40004, 256, 384) | changed-patch fraction on transitions 0.0452 | transitions 40000

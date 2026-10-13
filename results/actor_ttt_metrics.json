@@ -1,0 +1,36 @@
+{
+  "n": 400,
+  "off_data_boards": 30,
+  "success": {
+    "all": {
+      "actor": 0.7,
+      "actor top8 + judge": 0.955,
+      "judge, all 256": 0.7925
+    },
+    "2": {
+      "actor": 0.73,
+      "actor top8 + judge": 0.93,
+      "judge, all 256": 0.86
+    },
+    "3": {
+      "actor": 0.71,
+      "actor top8 + judge": 0.92,
+      "judge, all 256": 0.84
+    },
+    "4": {
+      "actor": 0.66,
+      "actor top8 + judge": 0.99,
+      "judge, all 256": 0.69
+    },
+    "5": {
+      "actor": 0.7,
+      "actor top8 + judge": 0.98,
+      "judge, all 256": 0.78
+    }
+  },
+  "decision_ms_median": {
+    "actor": 2.5790000008782954,
+    "actor top8 + judge": 8.142200000293087,
+    "judge, all 256": 35.421949999999924
+  }
+}

@@ -1,0 +1,7 @@
+step      0  states    1  0 steps/s
+step   5000  states  437  26 steps/s
+step  10000  states  479  26 steps/s
+step  15000  states  498  27 steps/s
+step  20000  states  509  27 steps/s
+step  25000  states  522  27 steps/s
+done: 30000 actions, 524 unique states, 20.1% no-op, 279 determinism checks passed (9 with a tiny anti-aliasing difference, <=50 faint pixels)
